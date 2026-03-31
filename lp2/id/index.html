@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Pelatihan Pemimpin Indonesia｜Pelatihan Komunikasi & Horenso 2026 - Mon-Dou</title>
+<meta name="description" content="Program pelatihan online dalam Bahasa Indonesia. Mengembangkan kemampuan komunikasi dan Horenso untuk manajer dan kandidat pemimpin Indonesia di perusahaan Jepang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a2e1a;--stone:#4b6857;--cream:#f7faf7;
+  --mist:#c3e6d0;--deep:#0d1f0d;--teal:#0d9488;
+  --green:#059669;--green-light:#d1fae5;--green-dark:#065f46;
+  --indigo:#1d4ed8;--lavender:#eff6ff;--yellow:#d97706;
+  --red:#dc2626;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans',sans-serif;background:#fff;color:var(--ink);font-weight:400;line-height:1.8;overflow-x:hidden;}
+
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--mist);
+  padding:12px 40px;display:flex;align-items:center;justify-content:space-between;
+}
+.header-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:0.05em;color:var(--green-dark);text-decoration:none;}
+.header-logo span{display:block;font-size:9px;font-weight:400;letter-spacing:0.3em;color:var(--stone);font-family:'Noto Sans',sans-serif;}
+nav.lp-nav{display:flex;align-items:center;gap:20px;}
+nav.lp-nav a{font-size:12px;font-weight:500;color:var(--stone);text-decoration:none;transition:color 0.2s;}
+nav.lp-nav a:hover{color:var(--green);}
+.lang-switch{font-size:11px;font-weight:700;color:var(--indigo);border:1.5px solid var(--indigo);padding:5px 12px;border-radius:100px;text-decoration:none;transition:all 0.2s;}
+.lang-switch:hover{background:var(--indigo);color:#fff;}
+.btn-cta-sm{background:var(--green);color:#fff;padding:10px 22px;font-size:12px;font-weight:700;border-radius:100px;text-decoration:none;transition:background 0.2s;box-shadow:0 2px 12px rgba(5,150,105,0.3);}
+.btn-cta-sm:hover{background:var(--green-dark);}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 40px 80px;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1596079890744-c1a0462d0975?w=1600&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(0.28) saturate(0.6);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(150deg,rgba(6,95,70,0.85) 0%,rgba(13,148,136,0.6) 50%,rgba(5,150,105,0.5) 100%);}
+.hero-content{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:100px;padding:7px 20px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.1em;margin-bottom:20px;backdrop-filter:blur(8px);}
+.hero-badge::before{content:'';width:8px;height:8px;background:#4ade80;border-radius:50%;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-date-banner{background:rgba(217,119,6,0.9);color:#fff;padding:10px 28px;border-radius:100px;font-size:13px;font-weight:700;margin-bottom:28px;display:inline-block;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,52px);font-weight:700;line-height:1.4;color:#fff;margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,0.4);}
+.hero-title .hl{color:#6ee7b7;border-bottom:3px solid rgba(240,171,252,0.7);padding-bottom:2px;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.88);line-height:2;max-width:640px;margin:0 auto 16px;}
+.hero-voice-strip{background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:20px 32px;max-width:680px;margin:0 auto 36px;text-align:left;}
+.hero-voice-strip p{font-size:13px;color:rgba(255,255,255,0.92);line-height:2;font-style:italic;}
+.hero-voice-strip p::before{content:'\"  ';color:#6ee7b7;font-size:18px;font-weight:700;}
+.hero-voice-strip p::after{content:'  \"';color:#6ee7b7;font-size:18px;font-weight:700;}
+.btn-cta-hero{display:inline-block;background:linear-gradient(135deg,#fff,#d1fae5);color:var(--green-dark);padding:20px 56px;font-size:16px;font-weight:700;border-radius:100px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.3);transition:transform 0.2s;letter-spacing:0.03em;}
+.btn-cta-hero:hover{transform:translateY(-2px);}
+.hero-specs{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px;}
+.hero-spec{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:6px 18px;border-radius:100px;font-size:12px;font-weight:700;backdrop-filter:blur(4px);}
+
+/* SECTION BASE */
+section{padding:96px 40px;}
+.section-inner{max-width:960px;margin:0 auto;}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:0.35em;color:var(--green);text-transform:uppercase;display:block;margin-bottom:12px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,36px);font-weight:700;line-height:1.5;color:var(--ink);margin-bottom:16px;}
+.sec-divider{width:48px;height:3px;background:linear-gradient(90deg,var(--green),var(--teal));border-radius:3px;margin-bottom:40px;}
+
+/* VOICE BANNER */
+.voice-banner-section{background:var(--green-dark);padding:64px 40px;position:relative;overflow:hidden;}
+.voice-banner-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(13,148,136,0.25) 0%,transparent 60%);pointer-events:none;}
+.voice-quotes{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;position:relative;z-index:1;}
+.vq{background:rgba(255,255,255,0.08);border:1.5px solid rgba(110,231,183,0.2);border-radius:16px;padding:28px;}
+.vq-type{font-size:10px;font-weight:700;letter-spacing:0.2em;margin-bottom:12px;display:block;}
+.vq-type.trainee{color:#6ee7b7;}
+.vq-type.manager{color:#a7f3d0;}
+.vq p{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.9;font-style:italic;}
+.vq p::before{content:'\" ';color:rgba(110,231,183,0.5);}
+.vq p::after{content:' \"';color:rgba(110,231,183,0.5);}
+
+/* PAIN */
+.pain-section{background:#fff;}
+.pain-section .sec-title{text-align:center;}
+.pain-section .sec-divider{margin:0 auto 40px;}
+.pain-photo-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:48px;}
+.pain-checklist{display:flex;flex-direction:column;gap:14px;}
+.pain-check{display:flex;gap:14px;align-items:flex-start;background:var(--green-light);border:1.5px solid var(--mist);border-radius:14px;padding:18px 20px;transition:transform 0.2s;}
+.pain-check:hover{transform:translateY(-2px);}
+.pain-check-icon{width:24px;height:24px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.pain-check-icon svg{width:12px;height:12px;fill:#fff;}
+.pain-check p{font-size:13px;color:var(--ink);line-height:1.8;font-weight:500;}
+.pain-photo-box{border-radius:20px;overflow:hidden;height:360px;box-shadow:0 16px 48px rgba(5,150,105,0.15);}
+.pain-photo-box img{width:100%;height:100%;object-fit:cover;}
+
+/* FEATURES */
+.features-section{background:var(--green-light);}
+.features-section .sec-title{text-align:center;}
+.features-section .sec-divider{margin:0 auto 40px;background:linear-gradient(90deg,var(--green),var(--teal));}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.feat-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(5,150,105,0.08);transition:transform 0.3s,box-shadow 0.3s;}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(5,150,105,0.14);}
+.feat-photo{height:180px;overflow:hidden;}
+.feat-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(0.88);transition:transform 0.4s;}
+.feat-card:hover .feat-photo img{transform:scale(1.04);}
+.feat-body{padding:28px;}
+.feat-num{font-size:10px;font-weight:700;letter-spacing:0.3em;color:var(--green);margin-bottom:10px;display:block;}
+.feat-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5;}
+.feat-text{font-size:13px;color:var(--stone);line-height:1.9;}
+
+/* CURRICULUM */
+.curriculum-section{background:#fff;}
+.curriculum-section .sec-title{text-align:center;}
+.curriculum-section .sec-divider{margin:0 auto 40px;}
+.schedule-header{background:linear-gradient(135deg,var(--green-dark),var(--teal));color:#fff;border-radius:16px 16px 0 0;padding:24px 32px;}
+.schedule-header h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;}
+.schedule-header p{font-size:13px;opacity:0.85;line-height:1.8;}
+.schedule-deadline{background:var(--yellow);color:#fff;display:inline-block;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;margin-top:8px;}
+.schedule-grid{border:1.5px solid var(--mist);border-top:none;border-radius:0 0 16px 16px;overflow:hidden;margin-bottom:32px;}
+.schedule-row{display:grid;grid-template-columns:80px 130px 1fr;border-bottom:1px solid var(--mist);}
+.schedule-row:last-child{border-bottom:none;}
+.schedule-row.header-row{background:var(--green-light);font-weight:700;font-size:12px;}
+.schedule-row>div{padding:16px 20px;font-size:13px;display:flex;align-items:center;}
+.schedule-row>div:not(:last-child){border-right:1px solid var(--mist);}
+.session-num{font-weight:700;color:var(--green);font-size:14px;}
+.session-date{color:var(--stone);}
+.session-title{color:var(--ink);font-weight:500;line-height:1.7;}
+.format-badges{display:flex;gap:10px;justify-content:center;margin-bottom:32px;flex-wrap:wrap;}
+.fmt-badge{padding:10px 24px;border-radius:100px;font-size:13px;font-weight:700;}
+.fmt-badge.online{background:#ecfdf5;color:var(--green);border:1.5px solid #a7f3d0;}
+.fmt-badge.lang{background:#eff6ff;color:var(--indigo);border:1.5px solid #bfdbfe;}
+.fmt-badge.count{background:#fff7ed;color:var(--yellow);border:1.5px solid #fcd34d;}
+
+/* TARGET */
+.target-section{background:var(--green-light);}
+.target-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.target-photo{border-radius:20px;overflow:hidden;height:320px;box-shadow:0 16px 48px rgba(5,150,105,0.15);}
+.target-photo img{width:100%;height:100%;object-fit:cover;}
+.target-list{display:flex;flex-direction:column;gap:14px;}
+.target-item{display:flex;gap:12px;align-items:flex-start;}
+.target-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.target-item p{font-size:14px;color:var(--ink);line-height:1.8;font-weight:500;}
+.target-item p span{color:var(--green-dark);font-weight:700;}
+.industry-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.ind-tag{background:#fff;border:1px solid var(--mist);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:500;color:var(--stone);}
+
+/* INSTRUCTOR */
+.instructor-section{background:#fff;}
+.instructor-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;}
+.instructor-photo{border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(5,150,105,0.12);}
+.instructor-photo img{width:100%;height:auto;display:block;}
+.instructor-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.instructor-role{font-size:13px;color:var(--green);font-weight:700;margin-bottom:20px;}
+.instructor-bio{font-size:14px;color:var(--stone);line-height:2;}
+.instructor-belief{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:20px;font-style:italic;font-size:14px;color:var(--ink);}
+
+/* PRICE */
+.price-section{background:var(--green-dark);position:relative;overflow:hidden;}
+.price-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 20% 50%,rgba(13,148,136,0.25) 0%,transparent 60%);pointer-events:none;}
+.price-section .sec-label{color:#6ee7b7;}
+.price-section .sec-title{color:#fff;text-align:center;}
+.price-section .sec-divider{margin:0 auto 40px;background:linear-gradient(90deg,#6ee7b7,#a7f3d0);}
+.price-box{background:rgba(255,255,255,0.08);border:1.5px solid rgba(110,231,183,0.25);border-radius:24px;padding:48px;max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.price-orig{font-size:14px;color:rgba(255,255,255,0.5);text-decoration:line-through;margin-bottom:8px;}
+.price-main{font-size:52px;font-weight:700;color:#fff;font-family:'Playfair Display',serif;}
+.price-main span{font-size:22px;vertical-align:middle;}
+.price-ref{font-size:13px;color:rgba(255,255,255,0.55);margin-top:6px;}
+.price-tag{display:inline-block;background:var(--yellow);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:100px;margin:16px 0;}
+.price-notes{text-align:left;margin-top:32px;display:flex;flex-direction:column;gap:10px;}
+.price-note{display:flex;gap:10px;font-size:13px;color:rgba(255,255,255,0.65);}
+.price-note::before{content:'•';color:#6ee7b7;flex-shrink:0;}
+
+/* FAQ */
+.faq-section{background:var(--cream);}
+.faq-section .sec-title{text-align:center;}
+.faq-section .sec-divider{margin:0 auto 40px;background:linear-gradient(90deg,var(--green),var(--teal));}
+.faq-list{display:flex;flex-direction:column;gap:14px;}
+.faq-item{background:#fff;border:1.5px solid var(--mist);border-radius:16px;overflow:hidden;}
+.faq-q{padding:22px 28px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;list-style:none;}
+.faq-q::-webkit-details-marker{display:none;}
+details[open] .faq-q{border-bottom:1px solid var(--mist);}
+.faq-qlabel{width:28px;height:28px;flex-shrink:0;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
+.faq-qtxt{font-size:14px;font-weight:700;color:var(--ink);padding-top:3px;}
+.faq-a{padding:20px 28px 20px 70px;font-size:13px;color:var(--stone);line-height:1.9;}
+.faq-a strong{color:var(--ink);}
+
+/* COMPANY */
+.company-section{background:var(--green-dark);}
+.company-section .sec-label{color:#6ee7b7;}
+.company-section .sec-title{color:#fff;}
+.company-section .sec-divider{background:linear-gradient(90deg,#6ee7b7,#a7f3d0);}
+.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.company-card{background:rgba(255,255,255,0.07);border:1.5px solid rgba(110,231,183,0.15);border-radius:20px;padding:32px;}
+.company-card-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
+.company-card-mission{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.9;margin-bottom:20px;font-style:italic;}
+.company-table{width:100%;}
+.company-table tr{border-bottom:1px solid rgba(110,231,183,0.1);}
+.company-table td{padding:10px 0;font-size:12px;vertical-align:top;}
+.company-table td:first-child{color:rgba(255,255,255,0.4);width:80px;padding-right:12px;}
+.company-table td:last-child{color:rgba(255,255,255,0.8);}
+
+/* CONTACT CTA */
+.contact-section{position:relative;padding:100px 40px;text-align:center;overflow:hidden;}
+.contact-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1600&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(0.3) saturate(0.6);}
+.contact-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,95,70,0.85),rgba(13,148,136,0.7));}
+.contact-content{position:relative;z-index:2;}
+.contact-content h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;margin-bottom:16px;line-height:1.5;}
+.contact-content p{font-size:15px;color:rgba(255,255,255,0.82);margin-bottom:12px;line-height:2;}
+.contact-deadline{background:var(--yellow);color:#fff;display:inline-block;font-size:13px;font-weight:700;padding:8px 24px;border-radius:100px;margin:12px 0 32px;}
+.btn-cta-white{display:inline-block;background:#fff;color:var(--green-dark);padding:20px 56px;font-size:16px;font-weight:700;border-radius:100px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.3);transition:transform 0.2s;}
+.btn-cta-white:hover{transform:translateY(-2px);}
+.btn-lang-alt{display:inline-block;background:transparent;color:#6ee7b7;border:1.5px solid #6ee7b7;padding:12px 28px;font-size:13px;font-weight:700;border-radius:100px;text-decoration:none;margin-top:16px;margin-left:12px;transition:all 0.2s;}
+.btn-lang-alt:hover{background:#6ee7b7;color:var(--deep);}
+
+/* FORM */
+.form-section{background:var(--cream);}
+.form-section .sec-title{text-align:center;}
+.form-section .sec-divider{margin:0 auto 40px;background:linear-gradient(90deg,var(--green),var(--teal));}
+.form-notice{background:var(--green-light);border:1.5px solid var(--mist);border-radius:14px;padding:20px 24px;font-size:13px;color:var(--stone);line-height:1.9;margin-bottom:32px;}
+.form-notice strong{color:var(--ink);}
+.form-box{background:#fff;border-radius:20px;padding:40px;border:1.5px solid var(--mist);}
+.form-group{margin-bottom:20px;}
+.form-label{display:block;font-size:11px;font-weight:700;letter-spacing:0.15em;color:var(--stone);margin-bottom:8px;}
+.form-label .req{color:var(--red);margin-left:4px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--cream);border:1.5px solid var(--mist);color:var(--ink);padding:12px 16px;font-size:14px;font-family:'Noto Sans',sans-serif;font-weight:400;outline:none;transition:border-color 0.2s;border-radius:10px;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green);}
+.form-textarea{min-height:100px;resize:vertical;}
+.form-group-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-divider{height:1px;background:var(--mist);margin:28px 0;}
+.form-group-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:16px;}
+.form-privacy-check{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--stone);cursor:pointer;margin-bottom:24px;}
+.form-privacy-check input{accent-color:var(--green);width:16px;height:16px;}
+.form-privacy-check a{color:var(--green);}
+.btn-submit{background:linear-gradient(135deg,var(--green),var(--teal));color:#fff;border:none;padding:18px 48px;font-size:15px;font-weight:700;border-radius:100px;cursor:pointer;font-family:'Noto Sans',sans-serif;width:100%;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(5,150,105,0.4);}
+.btn-submit:hover{transform:translateY(-2px);}
+
+footer{background:var(--deep);color:rgba(255,255,255,0.35);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;font-size:12px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:15px;color:rgba(255,255,255,0.55);text-decoration:none;}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:768px){
+  header{padding:12px 20px;}
+  nav.lp-nav{display:none;}
+  section{padding:64px 20px;}
+  .hero{padding:100px 20px 60px;}
+  .voice-quotes{grid-template-columns:1fr;}
+  .pain-photo-layout{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:1fr;}
+  .target-layout{grid-template-columns:1fr;}
+  .instructor-layout{grid-template-columns:1fr;}
+  .company-grid{grid-template-columns:1fr;}
+  .form-group-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:12px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="header-logo">
+    Mon-Dou
+    <span>MON-DOU INC.</span>
+  </a>
+  <nav class="lp-nav">
+    <a href="#features">Fitur Program</a>
+    <a href="#curriculum">Kurikulum</a>
+    <a href="#price">Biaya</a>
+    <a href="#faq">FAQ</a>
+    <a href="../" class="lang-switch">🇯🇵 日本語</a>
+    <a href="#form" class="btn-cta-sm">Daftar Sekarang</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Program Pengembangan Pemimpin Generasi Berikutnya 2026</div>
+    <div class="hero-date-banner">📅 Mulai 22 April 2026 (Rabu) — 8 sesi, setiap Rabu</div>
+    <h1 class="hero-title">
+      Tingkatkan Kemampuan<br>
+      <span class="hl">Komunikasi & Horenso</span><br>
+      Karyawan Indonesia Anda
+    </h1>
+    <p class="hero-sub">Pelatihan online dalam Bahasa Indonesia. Dirancang untuk manajer dan kandidat pemimpin Indonesia di perusahaan Jepang — membangun kemandirian dan kemampuan komunikasi selama 8 minggu.</p>
+    <div class="hero-voice-strip">
+      <p>Dari 'Harus bagaimana?' menjadi 'Saya ingin melakukan ini' — cara berkomunikasi mereka berubah</p>
+      <p style="margin-top:8px;">Sekarang mereka melaporkan masalah lebih cepat dari sebelumnya. Saya sangat terkejut</p>
+    </div>
+    <a href="#form" class="btn-cta-hero">Daftar Program Ini</a>
+    <div class="hero-specs">
+      <span class="hero-spec">🌐 Online (Zoom)</span>
+      <span class="hero-spec">🇮🇩 Bahasa Indonesia</span>
+      <span class="hero-spec">👥 Maks. 20 peserta / kelas</span>
+      <span class="hero-spec">⏱ 2 jam × 8 sesi</span>
+      <span class="hero-spec">💰 SGD $800 (Early Bird)</span>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<div class="voice-banner-section">
+  <div class="voice-quotes">
+    <div class="vq reveal">
+      <span class="vq-type trainee">Suara Peserta</span>
+      <p>Pelatihannya relevan dengan kondisi nyata di lapangan. Mudah dipahami dan mudah dipraktikkan.</p>
+    </div>
+    <div class="vq reveal">
+      <span class="vq-type manager">Suara Manajemen</span>
+      <p>Belakangan ini, dia mulai mengatur sendiri jadwal rapat dan bertindak secara proaktif. Jauh lebih mandiri dari sebelumnya.</p>
+    </div>
+    <div class="vq reveal">
+      <span class="vq-type manager">Suara Manajemen</span>
+      <p>Tiba-tiba dia mulai menyampaikan pendapat dan data di rapat — saya sempat terkejut dalam hati.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain-section" id="pain">
+  <div class="section-inner">
+    <span class="sec-label reveal">Tantangan</span>
+    <h2 class="sec-title reveal">Apakah Anda menghadapi tantangan seperti ini?</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="pain-photo-layout">
+      <div class="pain-photo-box reveal">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80&fit=crop" alt="Rapat di kantor">
+      </div>
+      <div class="pain-checklist">
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p>Hanya mengerjakan tugas yang diperintahkan, <strong>tidak berpikir 'mengapa' harus melakukan pekerjaan ini</strong></p>
+        </div>
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p>Selalu <strong>menunggu instruksi</strong>, tidak berpikir sendiri dan terus meminta jawaban dari atasan</p>
+        </div>
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p><strong>Tidak melakukan pelaporan, komunikasi, dan konsultasi (Horenso)</strong> — baru melapor setelah masalah muncul ke permukaan</p>
+        </div>
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p>Sudah dipromosikan ke posisi pemimpin, namun <strong>pola pikir masih sama seperti saat menjadi staf pelaksana</strong></p>
+        </div>
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p><strong>Tidak memahami peran dan sikap mental seorang pemimpin</strong>, sementara tidak ada waktu untuk mengajar dari awal</p>
+        </div>
+        <div class="pain-check reveal">
+          <div class="pain-check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p>Secara permukaan patuh, namun <strong>sama sekali tidak ada usulan perbaikan</strong></p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="#form" class="btn-cta-sm" style="font-size:14px;padding:14px 36px;">Program ini bisa menjadi solusinya →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-inner">
+    <span class="sec-label reveal">Keunggulan Program</span>
+    <h2 class="sec-title reveal">3 Keunggulan yang Menghasilkan Perubahan Nyata</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-photo">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75&fit=crop" alt="Instruktur profesional">
+        </div>
+        <div class="feat-body">
+          <span class="feat-num">KEUNGGULAN 01</span>
+          <h3 class="feat-title">Instruktur profesional lokal yang memahami perusahaan Jepang</h3>
+          <p class="feat-text">Diajar langsung oleh instruktur yang telah sukses sebagai manajer di perusahaan Jepang. Menyampaikan peran manajer versi Jepang dengan cara yang mudah dipahami dan diterima.</p>
+        </div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-photo">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75&fit=crop" alt="Praktik nyata">
+        </div>
+        <div class="feat-body">
+          <span class="feat-num">KEUNGGULAN 02</span>
+          <h3 class="feat-title">Ada mekanisme yang memastikan peserta mempraktikkan apa yang dipelajari</h3>
+          <p class="feat-text">Sebagai tugas hingga sesi berikutnya, peserta diminta menulis dan melaksanakan 'kapan, kepada siapa, apa yang akan dilakukan' secara konkret — lalu seluruh kelas merefleksikan bersama.</p>
+        </div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-photo">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=75&fit=crop" alt="Program berkelanjutan">
+        </div>
+        <div class="feat-body">
+          <span class="feat-num">KEUNGGULAN 03</span>
+          <h3 class="feat-title">Pengulangan membantu pemahaman mendalam dan pembentukan kebiasaan</h3>
+          <p class="feat-text">Manusia melupakan 67% materi pembelajaran hanya dalam sehari. Dengan format berkelanjutan dan review di awal setiap sesi, materi beralih ke memori jangka panjang dan terbentuk sebagai kebiasaan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum-section" id="curriculum">
+  <div class="section-inner">
+    <span class="sec-label reveal">Isi Program</span>
+    <h2 class="sec-title reveal">Kurikulum 8 Sesi</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="format-badges reveal">
+      <span class="fmt-badge online">🌐 Online (Zoom)</span>
+      <span class="fmt-badge lang">🇮🇩 Bahasa Indonesia</span>
+      <span class="fmt-badge count">👥 Maks. 20 per kelas · Maks. 3 per perusahaan</span>
+    </div>
+    <div class="reveal">
+      <div class="schedule-header">
+        <h3>Pelatihan Horenso & Penguatan Komunikasi — 8 Sesi</h3>
+        <p>Setiap Rabu, 09:30–11:30 (Waktu Jakarta) — 2 jam per sesi</p>
+        <span class="schedule-deadline">⏰ Batas Pendaftaran: 8 April 2026 (Rabu)</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="schedule-row header-row">
+          <div>Sesi</div><div>Tanggal</div><div>Tema</div>
+        </div>
+        <div class="schedule-row">
+          <div class="session-num">Sesi 1</div>
+          <div class="session-date">22 Apr (Rab)</div>
+          <div class="session-title">Dasar-dasar Horenso dan harapan di perusahaan Jepang<br><span style="font-size:12px;color:var(--stone);">Memahami mengapa Horenso sangat ditekankan di perusahaan Jepang.</span></div>
+        </div>
+        <div class="schedule-row">
+          <div class="session-num">Sesi 2</div>
+          <div class="session-date">29 Apr (Rab)</div>
+          <div class="session-title">Horenso yang efektif — isi, waktu, dan cara penyampaian<br><span style="font-size:12px;color:var(--stone);">Belajar secara praktis cara menyampaikan dengan mempertimbangkan sudut pandang penerima.</span></div>
+        </div>
+        <div class="schedule-row">
+          <div class="session-num">Sesi 3</div>
+          <div class="session-date">6 Mei (Rab)</div>
+          <div class="session-title">Komunikasi dengan bawahan dan junior<br><span style="font-size:12px;color:var(--stone);">Menguasai cara bersikap yang memberikan rasa aman dan kepercayaan kepada bawahan.</span></div>
+        </div>
+        <div class="schedule-row">
+          <div class="session-num">Sesi 4</div>
+          <div class="session-date">13 Mei (Rab)</div>
+          <div class="session-title">Mengatasi dilema dalam berkonsultasi<br><span style="font-size:12px;color:var(--stone);">Mempelajari keterampilan untuk melakukan 'konsultasi yang sudah disiapkan dengan tepat'.</span></div>
+        </div>
+        <div class="schedule-row">
+          <div class="session-num">Sesi 5–8</div>
+          <div class="session-date">20 Mei–17 Jun</div>
+          <div class="session-title">Latihan studi kasus praktis (Sesi 5–8)<br><span style="font-size:12px;color:var(--stone);">Role play dan studi kasus berulang menggunakan situasi nyata yang sering terjadi di lapangan.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section class="target-section" id="target">
+  <div class="section-inner">
+    <span class="sec-label reveal">Peserta Sasaran</span>
+    <h2 class="sec-title reveal">Siapa yang cocok mengikuti program ini?</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="target-layout">
+      <div class="target-photo reveal">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&q=80&fit=crop" alt="Kandidat manajer">
+      </div>
+      <div>
+        <div class="target-list">
+          <div class="target-item reveal">
+            <div class="target-icon">👔</div>
+            <p><span>Posisi pemimpin ke atas, supervisor, asisten manajer</span> atau kandidat manajer di masa depan</p>
+          </div>
+          <div class="target-item reveal">
+            <div class="target-icon">🌱</div>
+            <p>Siapa pun yang merupakan <span>"orang yang akan menjadi inti perusahaan ke depan"</span> cocok mengikuti program ini</p>
+          </div>
+          <div class="target-item reveal">
+            <div class="target-icon">💼</div>
+            <p>Tidak terbatas industri. Industri yang pernah berpartisipasi:</p>
+          </div>
+        </div>
+        <div class="industry-tags reveal">
+          <span class="ind-tag">Manufaktur</span>
+          <span class="ind-tag">Perdagangan</span>
+          <span class="ind-tag">Logistik</span>
+          <span class="ind-tag">Konstruksi</span>
+          <span class="ind-tag">Ritel</span>
+          <span class="ind-tag">Keuangan</span>
+          <span class="ind-tag">IT</span>
+          <span class="ind-tag">Dan berbagai industri lainnya</span>
+        </div>
+        <div style="background:var(--green);color:#fff;border-radius:14px;padding:20px 24px;margin-top:24px;font-size:14px;line-height:1.9;" class="reveal">
+          <strong>Tentang perbedaan pengalaman:</strong> Kami mempertimbangkan perbedaan pengalaman antar peserta dan melakukan penyesuaian seperti membagi kelompok diskusi sesuai level.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor-section" id="instructor">
+  <div class="section-inner">
+    <span class="sec-label reveal">Instruktur</span>
+    <h2 class="sec-title reveal">Profil Instruktur</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="instructor-layout reveal">
+      <div class="instructor-photo">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80&fit=crop" alt="WS PARTNERS Facilitator">
+      </div>
+      <div>
+        <p class="instructor-name">Winarto Abdullah Hidayat</p>
+        <p class="instructor-role">WS PARTNERS PTE LTD — Fasilitator</p>
+        <p class="instructor-bio">
+          Setelah menyelesaikan studi psikologi, beliau mengumpulkan pengalaman manajemen SDM selama lebih dari 20 tahun di perusahaan Jepang dan lokal Indonesia. Saat ini aktif sebagai konsultan manajemen SDM secara mandiri, dengan misi mengembangkan kelas manajemen menengah.
+          <br><br>
+          Sejak 2014, mengajar pengembangan diri di sekolah manajemen, dan terlibat dalam pengembangan SDM di lebih dari 20 perusahaan dan lembaga pemerintah melalui pengenalan kompetensi dan pelatihan.
+        </p>
+        <div class="instructor-belief">"Learning is endless task" — Penulis buku "Fundamental Self Empowerment" (2015)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="section-inner">
+    <span class="sec-label reveal">Biaya Pelatihan</span>
+    <h2 class="sec-title reveal">Informasi Biaya</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="price-box reveal">
+      <p class="price-orig">Harga normal SGD $1,600 → Harga spesial pembukaan kantor Indonesia SGD $1,000</p>
+      <div class="price-main"><span>SGD $</span>800</div>
+      <p class="price-ref">Referensi: sekitar Rp 10.674.000</p>
+      <div class="price-tag">★ Harga Early Bird (s/d 8 April)</div>
+      <div class="price-notes">
+        <div class="price-note">Maksimum 3 peserta per perusahaan</div>
+        <div class="price-note">Sudah termasuk: buku teks, laporan ringkas, sertifikat kelulusan</div>
+        <div class="price-note">Pembayaran: transfer bank dalam SGD</div>
+        <div class="price-note">Harga belum termasuk pajak</div>
+        <div class="price-note">Berdasarkan perjanjian pajak Indonesia-Singapura, tidak ada pemotongan pajak</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <span class="sec-label reveal">Pertanyaan Umum</span>
+    <h2 class="sec-title reveal">FAQ</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <details>
+          <summary class="faq-q"><span class="faq-qlabel">Q</span><span class="faq-qtxt">Apakah ada kelas pengganti jika absen?</span></summary>
+          <div class="faq-a">Tidak ada kelas pengganti. Peserta diharuskan hadir di semua 8 sesi.</div>
+        </details>
+      </div>
+      <div class="faq-item reveal">
+        <details>
+          <summary class="faq-q"><span class="faq-qlabel">Q</span><span class="faq-qtxt">Apakah pelatihan online sama efektifnya?</span></summary>
+          <div class="faq-a"><strong>Efektivitas pelatihan online sudah terbukti.</strong> Harap siapkan PC dengan kamera dan mikrofon, pastikan Zoom berfungsi dengan baik, dan ikuti pelatihan di tempat yang tidak terdengar oleh atasan atau bawahan.</div>
+        </details>
+      </div>
+      <div class="faq-item reveal">
+        <details>
+          <summary class="faq-q"><span class="faq-qlabel">Q</span><span class="faq-qtxt">Bagaimana alur setelah mendaftar?</span></summary>
+          <div class="faq-a">
+            1. Kami akan menghubungi Anda mengenai detail dan tagihan.<br>
+            2. Harap balas email yang kami kirimkan.<br>
+            3. Kami akan mengirimkan invoice beserta dokumen perpajakan (COR dan form DGT).<br>
+            4. Lakukan pembayaran sesuai invoice.<br>
+            5. Setelah pembayaran dikonfirmasi, informasi login akan segera dikirimkan.
+          </div>
+        </details>
+      </div>
+      <div class="faq-item reveal">
+        <details>
+          <summary class="faq-q"><span class="faq-qlabel">Q</span><span class="faq-qtxt">Kemana saya harus menghubungi untuk pertanyaan?</span></summary>
+          <div class="faq-a">Silakan hubungi kami melalui email: <strong>support@ws-partners.com.sg</strong> (Tatya / Kantaya)</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section class="company-section" id="company">
+  <div class="section-inner">
+    <span class="sec-label reveal">Penyelenggara</span>
+    <h2 class="sec-title reveal">Profil Perusahaan</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="company-grid">
+      <div class="company-card reveal">
+        <p class="company-card-name">Mon-Dou Inc. (株式会社問道社)</p>
+        <p class="company-card-mission">Memberikan pengalaman introspeksi baru melalui penelitian mekanisme bicara batin dan pengembangan sistem pendukung pertanyaan-jawaban mandiri, untuk memperkaya waktu bermakna manusia.</p>
+        <table class="company-table">
+          <tr><td>CEO</td><td>Yoshito Kaneda</td></tr>
+          <tr><td>Berdiri</td><td>9 Oktober 2020</td></tr>
+          <tr><td>Alamat</td><td>Tokyo, Jepang</td></tr>
+          <tr><td>Web</td><td>mon-dou.com</td></tr>
+        </table>
+      </div>
+      <div class="company-card reveal">
+        <p class="company-card-name">WS PARTNERS PTE LTD</p>
+        <p class="company-card-mission">Berkontribusi pada bisnis global perusahaan Jepang melalui pengembangan sumber daya manusia lokal, adaptasi staf expatriat, dan solusi masalah organisasi bagi perusahaan Jepang di ASEAN.</p>
+        <table class="company-table">
+          <tr><td>CEO</td><td>Kenta Kato</td></tr>
+          <tr><td>Berdiri</td><td>1 Desember 2015</td></tr>
+          <tr><td>Alamat</td><td>1 Marina Blvd, #20-00, Singapore 018989</td></tr>
+          <tr><td>Tel</td><td>+65-6978-4066</td></tr>
+          <tr><td>Web</td><td>ws-partners.com.sg</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-section">
+  <div class="contact-bg"></div>
+  <div class="contact-overlay"></div>
+  <div class="contact-content">
+    <h2>Daftarkan Diri Anda Sekarang</h2>
+    <p>Kami akan membantu mengembangkan pemimpin Indonesia<br>yang akan menjadi tulang punggung perusahaan Anda.</p>
+    <div class="contact-deadline">⏰ Batas Pendaftaran: 8 April 2026 (Rabu)</div>
+    <br>
+    <a href="#form" class="btn-cta-white">Ke Formulir Pendaftaran</a>
+    <a href="../" class="btn-lang-alt">🇯🇵 日本語サイト</a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:16px;">Konsultasi individu online juga tersedia. <a href="https://calendar.app.google/FwJJ68bYx8JXVsnR9" target="_blank" style="color:#6ee7b7;">Klik di sini untuk membuat janji</a></p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="section-inner">
+    <span class="sec-label reveal">Pendaftaran</span>
+    <h2 class="sec-title reveal">Formulir Pendaftaran</h2>
+    <div class="sec-divider reveal"></div>
+    <div class="form-notice reveal">
+      Jika ada beberapa peserta, mohon kirimkan formulir satu per satu untuk setiap peserta.<br>
+      Email konfirmasi pendaftaran akan dikirimkan ke alamat email penanggungjawab (PIC) Jepang, bukan ke peserta secara langsung.
+    </div>
+    <div class="form-box reveal">
+      <form>
+        <p class="form-group-title">Informasi Peserta Indonesia</p>
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="form-label">Nama Peserta <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Budi Santoso">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Departemen <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Divisi Produksi">
+          </div>
+        </div>
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="form-label">Jabatan <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Supervisor">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pengalaman di posisi saat ini <span class="req">*</span></label>
+            <select class="form-select">
+              <option value="">Pilih</option>
+              <option>Akan segera dipromosikan</option>
+              <option>Kurang dari 2 tahun</option>
+              <option>2–5 tahun</option>
+              <option>Lebih dari 5 tahun</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="form-label">No. Telepon Peserta <span class="req">*</span></label>
+            <input type="tel" class="form-input" placeholder="+62 812-xxxx-xxxx">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Peserta <span class="req">*</span></label>
+            <input type="email" class="form-input" placeholder="budi@company.co.id">
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <p class="form-group-title">Informasi PIC Jepang</p>
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="form-label">Nama PIC Jepang <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Yamada Taro">
+          </div>
+          <div class="form-group">
+            <label class="form-label">No. Telepon PIC <span class="req">*</span></label>
+            <input type="tel" class="form-input" placeholder="+62 21-xxxx-xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email PIC Jepang <span class="req">*</span></label>
+          <input type="email" class="form-input" placeholder="yamada@company.co.jp">
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-group">
+          <label class="form-label">Dari mana Anda mengetahui program ini?</label>
+          <select class="form-select">
+            <option value="">Pilih</option>
+            <option>Email dari WS PARTNERS</option>
+            <option>Informasi dari Mon-Dou</option>
+            <option>Rekomendasi dari kenalan</option>
+            <option>Mesin pencari (Google dll)</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <label class="form-privacy-check">
+          <input type="checkbox">
+          <span>Saya telah membaca dan menyetujui <a href="https://ws-partners.com.sg/privacy.html" target="_blank">Kebijakan Privasi</a></span>
+        </label>
+        <button type="submit" class="btn-submit">Kirim Pendaftaran</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="footer-logo">Mon-Dou Inc.</a>
+  <span>© 2026 Mon-Dou Inc. All rights reserved.</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
