@@ -8,20 +8,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1712;
-    --ink-light: #3d3830;
-    --stone: #7a7267;
-    --parchment: #f5f1ea;
-    --cream: #faf8f4;
-    --gold: #b8964a;
-    --gold-light: #d4b06a;
-    --mist: #e8e2d6;
-    --deep: #0d0c0a;
-    --accent: #8b6914;
+    --ink: #1e1b4b;
+    --ink-light: #312e81;
+    --stone: #6b7280;
+    --parchment: #f5f3ff;
+    --cream: #fafafa;
+    --gold: #4f46e5;
+    --gold-light: #7c3aed;
+    --mist: #e0e7ff;
+    --deep: #0f0e2a;
+    --accent: #6d28d9;
+    --violet: #7c3aed;
+    --indigo: #4f46e5;
+    --lavender: #ede9fe;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -31,17 +33,6 @@
     font-weight: 300;
     line-height: 1.8;
     overflow-x: hidden;
-  }
-
-  /* ─── NOISE TEXTURE ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
   }
 
   /* ─── HEADER ─── */
@@ -57,9 +48,9 @@
   }
 
   header.scrolled {
-    background: rgba(250, 248, 244, 0.94);
+    background: rgba(250,250,250,0.95);
     backdrop-filter: blur(12px);
-    box-shadow: 0 1px 0 rgba(26,23,18,0.08);
+    box-shadow: 0 1px 0 rgba(79,70,229,0.1);
   }
 
   .logo {
@@ -92,18 +83,19 @@
     font-weight: 400;
   }
 
-  nav a:hover { color: var(--ink); }
+  nav a:hover { color: var(--indigo); }
 
   .nav-cta {
-    background: var(--ink);
-    color: var(--cream) !important;
+    background: var(--indigo);
+    color: #fff !important;
     padding: 10px 22px;
     letter-spacing: 0.1em;
     font-size: 11px !important;
     transition: background 0.2s !important;
+    border-radius: 4px;
   }
 
-  .nav-cta:hover { background: var(--gold) !important; color: var(--cream) !important; }
+  .nav-cta:hover { background: var(--violet) !important; }
 
   /* ─── HERO ─── */
   .hero {
@@ -127,11 +119,13 @@
     display: inline-block;
     font-size: 10px;
     letter-spacing: 0.3em;
-    color: var(--gold);
-    border: 1px solid var(--gold-light);
+    color: var(--indigo);
+    background: var(--lavender);
+    border: 1px solid var(--mist);
     padding: 6px 16px;
     margin-bottom: 40px;
     width: fit-content;
+    border-radius: 100px;
   }
 
   .hero-title {
@@ -146,7 +140,7 @@
 
   .hero-title em {
     font-style: italic;
-    color: var(--gold);
+    color: var(--indigo);
     font-family: 'DM Serif Display', serif;
   }
 
@@ -161,8 +155,8 @@
   .hero-actions { display: flex; gap: 16px; align-items: center; }
 
   .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--indigo);
+    color: #fff;
     padding: 14px 32px;
     font-size: 12px;
     letter-spacing: 0.15em;
@@ -170,9 +164,10 @@
     font-family: 'Noto Sans JP', sans-serif;
     transition: background 0.25s, transform 0.2s;
     display: inline-block;
+    border-radius: 4px;
   }
 
-  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--violet); transform: translateY(-1px); }
 
   .btn-ghost {
     color: var(--stone);
@@ -184,48 +179,46 @@
     transition: color 0.2s, border-color 0.2s;
   }
 
-  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { color: var(--indigo); border-color: var(--indigo); }
 
   .hero-right {
     position: relative;
-    background: var(--parchment);
+    background: var(--lavender);
     overflow: hidden;
   }
 
   .hero-right-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80&fit=crop&crop=entropy');
+    background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80&fit=crop&crop=entropy');
     background-size: cover;
-    background-position: center;
-    opacity: 0.18;
-    filter: sepia(40%) saturate(60%);
+    background-position: center top;
+    opacity: 0.55;
+    filter: saturate(80%) brightness(0.95);
   }
 
   .hero-right::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 70% 40%, rgba(184,150,74,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 30% 70%, rgba(26,23,18,0.06) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(79,70,229,0.25) 0%, rgba(124,58,237,0.15) 60%, transparent 100%);
     z-index: 1;
   }
-
-  .hero-visual { z-index: 2; }
 
   .hero-visual {
     position: absolute;
     inset: 0;
+    z-index: 2;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 40px;
   }
 
   .iris-mark {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 240px;
+    height: 240px;
   }
 
   .iris-ring {
@@ -236,17 +229,16 @@
     animation: pulse-ring 4s ease-in-out infinite;
   }
 
-  .iris-ring:nth-child(1) { border-color: rgba(184,150,74,0.6); animation-delay: 0s; }
-  .iris-ring:nth-child(2) { inset: 20px; border-color: rgba(184,150,74,0.4); animation-delay: 0.5s; }
-  .iris-ring:nth-child(3) { inset: 50px; border-color: rgba(184,150,74,0.25); animation-delay: 1s; }
-  .iris-ring:nth-child(4) { inset: 90px; border-color: rgba(184,150,74,0.15); animation-delay: 1.5s; }
+  .iris-ring:nth-child(1) { border-color: rgba(255,255,255,0.7); animation-delay: 0s; }
+  .iris-ring:nth-child(2) { inset: 20px; border-color: rgba(255,255,255,0.5); animation-delay: 0.5s; }
+  .iris-ring:nth-child(3) { inset: 50px; border-color: rgba(255,255,255,0.3); animation-delay: 1s; }
+  .iris-ring:nth-child(4) { inset: 80px; border-color: rgba(255,255,255,0.15); animation-delay: 1.5s; }
 
   .iris-center {
     position: absolute;
-    inset: 120px;
+    inset: 100px;
     border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.15;
+    background: rgba(255,255,255,0.2);
     animation: pulse-center 4s ease-in-out infinite;
   }
 
@@ -257,20 +249,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Shippori Mincho', serif;
   }
 
   .iris-label .en {
     font-family: 'DM Serif Display', serif;
-    font-size: 42px;
-    color: var(--gold);
+    font-size: 36px;
+    color: #fff;
     letter-spacing: 0.1em;
   }
 
   .iris-label .ja {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.3em;
-    color: var(--stone);
+    color: rgba(255,255,255,0.7);
     margin-top: 4px;
   }
 
@@ -280,8 +271,8 @@
   }
 
   @keyframes pulse-center {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.25; }
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
   }
 
   /* ─── SECTION BASE ─── */
@@ -290,7 +281,7 @@
   .section-label {
     font-size: 10px;
     letter-spacing: 0.4em;
-    color: var(--gold);
+    color: var(--indigo);
     text-transform: uppercase;
     margin-bottom: 16px;
     display: block;
@@ -308,15 +299,16 @@
 
   .section-divider {
     width: 40px;
-    height: 1px;
-    background: var(--gold);
+    height: 2px;
+    background: linear-gradient(90deg, var(--indigo), var(--violet));
     margin-bottom: 40px;
+    border-radius: 2px;
   }
 
   /* ─── PURPOSE ─── */
   .purpose {
     background: var(--ink);
-    color: var(--cream);
+    color: #fff;
     position: relative;
     overflow: hidden;
   }
@@ -332,30 +324,36 @@
     color: rgba(255,255,255,0.03);
     line-height: 1;
     pointer-events: none;
-    letter-spacing: -0.05em;
   }
 
-  .purpose .section-label { color: var(--gold-light); }
-  .purpose .section-title { color: var(--cream); }
-  .purpose .section-divider { background: var(--gold-light); }
+  .purpose::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(79,70,229,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .purpose .section-label { color: #a5b4fc; }
+  .purpose .section-title { color: #fff; }
+  .purpose .section-divider { background: linear-gradient(90deg, #a5b4fc, #c4b5fd); }
 
   .purpose-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .purpose-text {
     font-size: 15px;
     line-height: 2.4;
-    color: rgba(250,248,244,0.75);
+    color: rgba(255,255,255,0.7);
     white-space: pre-line;
-  }
-
-  .purpose-text strong {
-    color: var(--cream);
-    font-weight: 400;
   }
 
   .purpose-tags {
@@ -370,14 +368,14 @@
     align-items: center;
     gap: 12px;
     font-size: 13px;
-    color: rgba(250,248,244,0.6);
+    color: rgba(255,255,255,0.55);
   }
 
   .purpose-tag::before {
     content: '';
     width: 24px;
     height: 1px;
-    background: var(--gold-light);
+    background: #a5b4fc;
     flex-shrink: 0;
   }
 
@@ -399,11 +397,10 @@
   .iris-card {
     background: var(--cream);
     padding: 40px 28px;
-    position: relative;
     transition: background 0.3s;
   }
 
-  .iris-card:hover { background: var(--parchment); }
+  .iris-card:hover { background: var(--lavender); }
 
   .iris-card-num {
     font-family: 'DM Serif Display', serif;
@@ -429,7 +426,7 @@
   }
 
   /* ─── BUSINESS ─── */
-  .business { background: var(--parchment); }
+  .business { background: var(--lavender); }
 
   .business-grid {
     display: grid;
@@ -440,22 +437,20 @@
   }
 
   .business-card {
-    background: var(--parchment);
+    background: #fff;
     overflow: hidden;
     transition: background 0.3s;
   }
 
-  .business-card:hover { background: var(--cream); }
+  .business-card:hover { background: var(--lavender); }
 
-  .business-card-body {
-    padding: 32px 32px 40px;
-  }
+  .business-card-body { padding: 32px 32px 40px; }
 
   .business-card-num {
     font-family: 'DM Serif Display', serif;
     font-size: 13px;
     letter-spacing: 0.2em;
-    color: var(--gold);
+    color: var(--indigo);
     margin-bottom: 20px;
   }
 
@@ -479,23 +474,22 @@
     width: 100%;
     height: 180px;
     object-fit: cover;
-    object-position: center;
     display: block;
-    filter: sepia(20%) saturate(80%) brightness(0.95);
+    filter: saturate(75%) brightness(0.97);
     transition: filter 0.4s, transform 0.4s;
-    overflow: hidden;
   }
 
   .business-card:hover .business-card-img {
-    filter: sepia(10%) saturate(90%) brightness(1.0);
+    filter: saturate(90%) brightness(1.0);
     transform: scale(1.03);
   }
 
   .business-card-img-wrap {
     overflow: hidden;
     height: 180px;
-    margin-bottom: 0;
   }
+
+  /* ─── ISSUE ─── */
   .issue { background: var(--cream); }
 
   .issue-intro {
@@ -514,29 +508,19 @@
 
   .issue-card {
     border: 1px solid var(--mist);
-    padding: 0;
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
     text-decoration: none;
     color: inherit;
     display: block;
+    border-radius: 8px;
   }
 
-  .issue-card:hover { border-color: var(--gold-light); transform: translateY(-4px); }
+  .issue-card:hover { border-color: var(--indigo); transform: translateY(-4px); }
 
   .issue-card-thumb {
     height: 200px;
-    background: var(--parchment);
-    position: relative;
     overflow: hidden;
-  }
-
-  .issue-card-thumb-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .issue-card-body { padding: 28px 28px 32px; }
@@ -544,7 +528,7 @@
   .issue-source {
     font-size: 10px;
     letter-spacing: 0.3em;
-    color: var(--gold);
+    color: var(--indigo);
     margin-bottom: 12px;
     display: block;
   }
@@ -558,7 +542,7 @@
   }
 
   /* ─── CORPORATE ─── */
-  .corporate { background: var(--parchment); }
+  .corporate { background: var(--lavender); }
 
   .corporate-layout {
     display: grid;
@@ -569,9 +553,7 @@
 
   .corporate-table { width: 100%; }
 
-  .corporate-table tr {
-    border-bottom: 1px solid var(--mist);
-  }
+  .corporate-table tr { border-bottom: 1px solid var(--mist); }
 
   .corporate-table td {
     padding: 20px 0;
@@ -587,15 +569,13 @@
     padding-right: 24px;
   }
 
-  .corporate-table td:last-child {
-    color: var(--ink);
-  }
+  .corporate-table td:last-child { color: var(--ink); }
 
   /* ─── CONTACT ─── */
-  .contact { background: var(--ink); color: var(--cream); }
-  .contact .section-label { color: var(--gold-light); }
-  .contact .section-title { color: var(--cream); }
-  .contact .section-divider { background: var(--gold-light); }
+  .contact { background: var(--ink); color: #fff; }
+  .contact .section-label { color: #a5b4fc; }
+  .contact .section-title { color: #fff; }
+  .contact .section-divider { background: linear-gradient(90deg, #a5b4fc, #c4b5fd); }
 
   .contact-layout {
     display: grid;
@@ -606,7 +586,7 @@
 
   .contact-lead {
     font-size: 14px;
-    color: rgba(250,248,244,0.65);
+    color: rgba(255,255,255,0.6);
     line-height: 2;
     margin-bottom: 32px;
   }
@@ -617,25 +597,26 @@
     display: block;
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: rgba(250,248,244,0.5);
+    color: rgba(255,255,255,0.45);
     margin-bottom: 8px;
   }
 
   .form-input, .form-textarea {
     width: 100%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: var(--cream);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(165,180,252,0.2);
+    color: #fff;
     padding: 14px 16px;
     font-size: 14px;
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
     outline: none;
     transition: border-color 0.2s;
+    border-radius: 4px;
   }
 
   .form-input:focus, .form-textarea:focus {
-    border-color: var(--gold-light);
+    border-color: #a5b4fc;
   }
 
   .form-textarea { min-height: 140px; resize: vertical; }
@@ -645,18 +626,17 @@
     align-items: center;
     gap: 10px;
     font-size: 12px;
-    color: rgba(250,248,244,0.5);
+    color: rgba(255,255,255,0.45);
     margin-bottom: 28px;
     cursor: pointer;
   }
 
-  .form-privacy input { accent-color: var(--gold); width: 14px; height: 14px; }
-
-  .form-privacy a { color: var(--gold-light); }
+  .form-privacy input { accent-color: #a5b4fc; width: 14px; height: 14px; }
+  .form-privacy a { color: #a5b4fc; }
 
   .btn-submit {
-    background: var(--gold);
-    color: var(--deep);
+    background: var(--indigo);
+    color: #fff;
     border: none;
     padding: 16px 40px;
     font-size: 12px;
@@ -665,14 +645,15 @@
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 500;
     transition: background 0.2s, transform 0.2s;
+    border-radius: 4px;
   }
 
-  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-submit:hover { background: var(--violet); transform: translateY(-1px); }
 
   /* ─── FOOTER ─── */
   footer {
     background: var(--deep);
-    color: rgba(250,248,244,0.4);
+    color: rgba(255,255,255,0.35);
     padding: 48px 80px;
     display: flex;
     align-items: center;
@@ -684,21 +665,21 @@
   .footer-logo {
     font-family: 'Shippori Mincho', serif;
     font-size: 16px;
-    color: rgba(250,248,244,0.6);
+    color: rgba(255,255,255,0.55);
     letter-spacing: 0.2em;
     text-decoration: none;
   }
 
   .footer-links { display: flex; gap: 24px; }
-  .footer-links a { color: rgba(250,248,244,0.35); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: rgba(250,248,244,0.65); }
+  .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #a5b4fc; }
 
   /* ─── DECORATIVE LINE ─── */
   .deco-line {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
-    opacity: 0.3;
+    background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+    opacity: 0.4;
   }
 
   /* ─── SCROLL ANIMATIONS ─── */
@@ -718,11 +699,9 @@
     header { padding: 16px 24px; }
     nav { display: none; }
     section { padding: 80px 24px; }
-
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 120px 24px 60px; }
-    .hero-right { height: 340px; }
-
+    .hero-right { height: 380px; }
     .purpose-layout { grid-template-columns: 1fr; gap: 40px; }
     .iris-grid { grid-template-columns: repeat(2, 1fr); }
     .iris-card:last-child { grid-column: 1 / -1; }
@@ -796,7 +775,12 @@
       <span class="section-label">Our Purpose</span>
       <h2 class="section-title">意味が花咲く<br>時の探究</h2>
       <div class="section-divider"></div>
-      <p class="purpose-text">問道社は<br>人が意味を感じる時間を<br>より豊かなものにするために<br>内言のメカニズムの研究と<br>自問自答支援の仕組みづくりを通じて<br>新たな内省体験を提供しています</p>
+      <p class="purpose-text">問道社は
+人が意味を感じる時間を
+より豊かなものにするために
+内言のメカニズムの研究と
+自問自答支援の仕組みづくりを通じて
+新たな内省体験を提供しています</p>
       <div class="purpose-tags">
         <span class="purpose-tag">企業研修や1on1などの効果向上</span>
         <span class="purpose-tag">教育やカウンセリングにおける体験改善</span>
@@ -807,10 +791,10 @@
       <span class="section-label">IRISについて</span>
       <h2 class="section-title">あたまの中をまとめる<br>内省ツール IRIS</h2>
       <div class="section-divider"></div>
-      <p style="font-size:14px;color:rgba(250,248,244,0.65);line-height:2.2;margin-bottom:28px;">
+      <p style="font-size:14px;color:rgba(255,255,255,0.65);line-height:2.2;margin-bottom:28px;">
         IRIS（アイリス）は内省を支援するツールで、特定のテーマについて自問自答を行い、その結果を可視化します。IRISを利用すると、自己理解と思考の整理をより深く、より短時間で行うことができます。
       </p>
-      <a href="https://chatgpt.com/g/g-67fccdbe542481919cac0a72bb1109df-irishuasiritetakaito" target="_blank" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(184,150,74,0.4);padding:16px 24px;text-decoration:none;color:var(--gold-light);font-size:12px;letter-spacing:0.15em;transition:all 0.2s;" onmouseover="this.style.background='rgba(184,150,74,0.08)'" onmouseout="this.style.background='transparent'">
+      <a href="https://chatgpt.com/g/g-67fccdbe542481919cac0a72bb1109df-irishuasiritetakaito" target="_blank" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(165,180,252,0.35);padding:16px 24px;text-decoration:none;color:#a5b4fc;font-size:12px;letter-spacing:0.15em;transition:all 0.2s;border-radius:6px;" onmouseover="this.style.background='rgba(165,180,252,0.1)'" onmouseout="this.style.background='transparent'">
         <span style="font-size:18px;">✦</span>
         IRISなんでも相談GPTを試す
       </a>
@@ -943,7 +927,7 @@
   <div class="issue-grid">
     <a href="https://note.com/kennyyang/n/na7eeba2784c8" target="_blank" class="issue-card reveal">
       <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=75&fit=crop" alt="思考の可視化" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=75&fit=crop" alt="思考の可視化" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
       </div>
       <div class="issue-card-body">
         <span class="issue-source">NOTE — 金田喜人 / 内省ツールIRIS開発者</span>
@@ -952,7 +936,7 @@
     </a>
     <a href="https://www.anow.jp/technology/39/" target="_blank" class="issue-card reveal">
       <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75&fit=crop" alt="対話と協働" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75&fit=crop" alt="対話と協働" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
       </div>
       <div class="issue-card-body">
         <span class="issue-source">INTERVIEW — anow.jp</span>
@@ -961,7 +945,7 @@
     </a>
     <a href="https://www.anow.jp/technology/40/" target="_blank" class="issue-card reveal">
       <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?w=600&q=75&fit=crop" alt="意味と変化" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?w=600&q=75&fit=crop" alt="意味と変化" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
       </div>
       <div class="issue-card-body">
         <span class="issue-source">INTERVIEW — anow.jp</span>
@@ -983,26 +967,11 @@
     </div>
     <div class="reveal">
       <table class="corporate-table">
-        <tr>
-          <td>会社名</td>
-          <td>株式会社問道社</td>
-        </tr>
-        <tr>
-          <td>代表者</td>
-          <td>金田 喜人</td>
-        </tr>
-        <tr>
-          <td>設立</td>
-          <td>2020年10月9日</td>
-        </tr>
-        <tr>
-          <td>資本金</td>
-          <td>1,100万円（資本準備金を含む）</td>
-        </tr>
-        <tr>
-          <td>所在地</td>
-          <td>〒181-0002 東京都三鷹市牟礼6−24−24 309</td>
-        </tr>
+        <tr><td>会社名</td><td>株式会社問道社</td></tr>
+        <tr><td>代表者</td><td>金田 喜人</td></tr>
+        <tr><td>設立</td><td>2020年10月9日</td></tr>
+        <tr><td>資本金</td><td>1,100万円（資本準備金を含む）</td></tr>
+        <tr><td>所在地</td><td>〒181-0002 東京都三鷹市牟礼6−24−24 309</td></tr>
       </table>
     </div>
   </div>
@@ -1055,14 +1024,12 @@
 </footer>
 
 <script>
-  // Header scroll effect
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
   });
 
-  // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
