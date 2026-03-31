@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>問道社 -内省力を育てる-</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1712;
+    --ink-light: #3d3830;
+    --stone: #7a7267;
+    --parchment: #f5f1ea;
+    --cream: #faf8f4;
+    --gold: #b8964a;
+    --gold-light: #d4b06a;
+    --mist: #e8e2d6;
+    --deep: #0d0c0a;
+    --accent: #8b6914;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+
+  header.scrolled {
+    background: rgba(250, 248, 244, 0.94);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(26,23,18,0.08);
+  }
+
+  .logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: var(--stone);
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: 2px;
+  }
+
+  nav { display: flex; align-items: center; gap: 36px; }
+
+  nav a {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  nav a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 10px 22px;
+    letter-spacing: 0.1em;
+    font-size: 11px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold) !important; color: var(--cream) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    border: 1px solid var(--gold-light);
+    padding: 6px 16px;
+    margin-bottom: 40px;
+    width: fit-content;
+  }
+
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: var(--stone);
+    line-height: 2;
+    max-width: 400px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 32px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+
+  .btn-ghost {
+    color: var(--stone);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border-bottom: 1px solid var(--mist);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-right {
+    position: relative;
+    background: var(--parchment);
+    overflow: hidden;
+  }
+
+  .hero-right-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80&fit=crop&crop=entropy');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    filter: sepia(40%) saturate(60%);
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 40%, rgba(184,150,74,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 30% 70%, rgba(26,23,18,0.06) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .hero-visual { z-index: 2; }
+
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .iris-mark {
+    position: relative;
+    width: 320px;
+    height: 320px;
+  }
+
+  .iris-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid;
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+
+  .iris-ring:nth-child(1) { border-color: rgba(184,150,74,0.6); animation-delay: 0s; }
+  .iris-ring:nth-child(2) { inset: 20px; border-color: rgba(184,150,74,0.4); animation-delay: 0.5s; }
+  .iris-ring:nth-child(3) { inset: 50px; border-color: rgba(184,150,74,0.25); animation-delay: 1s; }
+  .iris-ring:nth-child(4) { inset: 90px; border-color: rgba(184,150,74,0.15); animation-delay: 1.5s; }
+
+  .iris-center {
+    position: absolute;
+    inset: 120px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.15;
+    animation: pulse-center 4s ease-in-out infinite;
+  }
+
+  .iris-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  .iris-label .en {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .iris-label .ja {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--stone);
+    margin-top: 4px;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.7; }
+  }
+
+  @keyframes pulse-center {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 120px 80px; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  /* ─── PURPOSE ─── */
+  .purpose {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .purpose::before {
+    content: '問道';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 280px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  .purpose .section-label { color: var(--gold-light); }
+  .purpose .section-title { color: var(--cream); }
+  .purpose .section-divider { background: var(--gold-light); }
+
+  .purpose-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .purpose-text {
+    font-size: 15px;
+    line-height: 2.4;
+    color: rgba(250,248,244,0.75);
+    white-space: pre-line;
+  }
+
+  .purpose-text strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .purpose-tags {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .purpose-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: rgba(250,248,244,0.6);
+  }
+
+  .purpose-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold-light);
+    flex-shrink: 0;
+  }
+
+  /* ─── IRIS FEATURES ─── */
+  .iris-section { background: var(--cream); }
+
+  .iris-header {
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+
+  .iris-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    background: var(--mist);
+  }
+
+  .iris-card {
+    background: var(--cream);
+    padding: 40px 28px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .iris-card:hover { background: var(--parchment); }
+
+  .iris-card-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--mist);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .iris-card-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .iris-card-text {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.9;
+  }
+
+  /* ─── BUSINESS ─── */
+  .business { background: var(--parchment); }
+
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--mist);
+    margin-top: 64px;
+  }
+
+  .business-card {
+    background: var(--parchment);
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .business-card:hover { background: var(--cream); }
+
+  .business-card-body {
+    padding: 32px 32px 40px;
+  }
+
+  .business-card-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .business-card-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .business-card-text {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 2;
+  }
+
+  .business-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: sepia(20%) saturate(80%) brightness(0.95);
+    transition: filter 0.4s, transform 0.4s;
+    overflow: hidden;
+  }
+
+  .business-card:hover .business-card-img {
+    filter: sepia(10%) saturate(90%) brightness(1.0);
+    transform: scale(1.03);
+  }
+
+  .business-card-img-wrap {
+    overflow: hidden;
+    height: 180px;
+    margin-bottom: 0;
+  }
+  .issue { background: var(--cream); }
+
+  .issue-intro {
+    max-width: 720px;
+    font-size: 15px;
+    color: var(--stone);
+    line-height: 2.2;
+    margin-bottom: 64px;
+  }
+
+  .issue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .issue-card {
+    border: 1px solid var(--mist);
+    padding: 0;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .issue-card:hover { border-color: var(--gold-light); transform: translateY(-4px); }
+
+  .issue-card-thumb {
+    height: 200px;
+    background: var(--parchment);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .issue-card-thumb-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .issue-card-body { padding: 28px 28px 32px; }
+
+  .issue-source {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .issue-card-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  /* ─── CORPORATE ─── */
+  .corporate { background: var(--parchment); }
+
+  .corporate-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .corporate-table { width: 100%; }
+
+  .corporate-table tr {
+    border-bottom: 1px solid var(--mist);
+  }
+
+  .corporate-table td {
+    padding: 20px 0;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  .corporate-table td:first-child {
+    color: var(--stone);
+    width: 120px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding-right: 24px;
+  }
+
+  .corporate-table td:last-child {
+    color: var(--ink);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact { background: var(--ink); color: var(--cream); }
+  .contact .section-label { color: var(--gold-light); }
+  .contact .section-title { color: var(--cream); }
+  .contact .section-divider { background: var(--gold-light); }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-lead {
+    font-size: 14px;
+    color: rgba(250,248,244,0.65);
+    line-height: 2;
+    margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 24px; }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(250,248,244,0.5);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--cream);
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--gold-light);
+  }
+
+  .form-textarea { min-height: 140px; resize: vertical; }
+
+  .form-privacy {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: rgba(250,248,244,0.5);
+    margin-bottom: 28px;
+    cursor: pointer;
+  }
+
+  .form-privacy input { accent-color: var(--gold); width: 14px; height: 14px; }
+
+  .form-privacy a { color: var(--gold-light); }
+
+  .btn-submit {
+    background: var(--gold);
+    color: var(--deep);
+    border: none;
+    padding: 16px 40px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    color: rgba(250,248,244,0.4);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    color: rgba(250,248,244,0.6);
+    letter-spacing: 0.2em;
+    text-decoration: none;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(250,248,244,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(250,248,244,0.65); }
+
+  /* ─── DECORATIVE LINE ─── */
+  .deco-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    opacity: 0.3;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    header { padding: 16px 24px; }
+    nav { display: none; }
+    section { padding: 80px 24px; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 24px 60px; }
+    .hero-right { height: 340px; }
+
+    .purpose-layout { grid-template-columns: 1fr; gap: 40px; }
+    .iris-grid { grid-template-columns: repeat(2, 1fr); }
+    .iris-card:last-child { grid-column: 1 / -1; }
+    .business-grid { grid-template-columns: 1fr; }
+    .issue-grid { grid-template-columns: 1fr; }
+    .corporate-layout { grid-template-columns: 1fr; gap: 40px; }
+    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">
+    問道社
+    <span>MON-DOU INC.</span>
+  </a>
+  <nav>
+    <a href="#about-iris">IRISとは</a>
+    <a href="#business">事業内容</a>
+    <a href="#corporate">会社概要</a>
+    <a href="#contact" class="nav-cta">お問い合わせ</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <span class="hero-badge">IRIS — 内省支援ツール　テスト運用中</span>
+    <h1 class="hero-title">
+      さぁ、<br>
+      アタマの中を<br>
+      <em>まとめよう</em>
+    </h1>
+    <p class="hero-sub">
+      IRIS（アイリス）は内省を支援するツールで、<br>
+      特定のテーマについて自問自答を行い、<br>
+      その結果を可視化します。
+    </p>
+    <div class="hero-actions">
+      <a href="https://app.iris.do/?type=line" class="btn-primary" target="_blank">IRIS for LINE（無料）</a>
+      <a href="#about-iris" class="btn-ghost">詳しく見る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-visual">
+      <div class="iris-mark">
+        <div class="iris-ring"></div>
+        <div class="iris-ring"></div>
+        <div class="iris-ring"></div>
+        <div class="iris-ring"></div>
+        <div class="iris-center"></div>
+        <div class="iris-label">
+          <span class="en">IRIS</span>
+          <span class="ja">内省可視化ツール</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="deco-line"></div>
+
+<!-- PURPOSE -->
+<section class="purpose" id="about-iris">
+  <div class="purpose-layout">
+    <div class="reveal">
+      <span class="section-label">Our Purpose</span>
+      <h2 class="section-title">意味が花咲く<br>時の探究</h2>
+      <div class="section-divider"></div>
+      <p class="purpose-text">問道社は<br>人が意味を感じる時間を<br>より豊かなものにするために<br>内言のメカニズムの研究と<br>自問自答支援の仕組みづくりを通じて<br>新たな内省体験を提供しています</p>
+      <div class="purpose-tags">
+        <span class="purpose-tag">企業研修や1on1などの効果向上</span>
+        <span class="purpose-tag">教育やカウンセリングにおける体験改善</span>
+        <span class="purpose-tag">プロジェクトやチームのマネジメント改善</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="section-label">IRISについて</span>
+      <h2 class="section-title">あたまの中をまとめる<br>内省ツール IRIS</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:14px;color:rgba(250,248,244,0.65);line-height:2.2;margin-bottom:28px;">
+        IRIS（アイリス）は内省を支援するツールで、特定のテーマについて自問自答を行い、その結果を可視化します。IRISを利用すると、自己理解と思考の整理をより深く、より短時間で行うことができます。
+      </p>
+      <a href="https://chatgpt.com/g/g-67fccdbe542481919cac0a72bb1109df-irishuasiritetakaito" target="_blank" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(184,150,74,0.4);padding:16px 24px;text-decoration:none;color:var(--gold-light);font-size:12px;letter-spacing:0.15em;transition:all 0.2s;" onmouseover="this.style.background='rgba(184,150,74,0.08)'" onmouseout="this.style.background='transparent'">
+        <span style="font-size:18px;">✦</span>
+        IRISなんでも相談GPTを試す
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- IRIS FEATURES -->
+<section class="iris-section">
+  <div class="iris-header reveal">
+    <span class="section-label">Features</span>
+    <h2 class="section-title">IRISが選ばれる<br>5つの理由</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="iris-grid">
+    <div class="iris-card reveal">
+      <div class="iris-card-num">01</div>
+      <div class="iris-card-title">アクセシビリティ</div>
+      <p class="iris-card-text">LINEアプリが使えるスマートフォンがあれば誰でも利用できます。オンライン・オフラインを問わず、同時に数百人でも利用可能です。</p>
+    </div>
+    <div class="iris-card reveal">
+      <div class="iris-card-num">02</div>
+      <div class="iris-card-title">手軽さ</div>
+      <p class="iris-card-text">5分程度で内省を行い、思考を整理することができます。スマホでチャットができれば、初めてでも20分程度で利用可能です。</p>
+    </div>
+    <div class="iris-card reveal">
+      <div class="iris-card-num">03</div>
+      <div class="iris-card-title">データ化</div>
+      <p class="iris-card-text">思考のプロセスが統一されたフォーマットでデータ化されます。これにより、自分自身の思考パターンを把握しやすくなります。</p>
+    </div>
+    <div class="iris-card reveal">
+      <div class="iris-card-num">04</div>
+      <div class="iris-card-title">共有可能</div>
+      <p class="iris-card-text">データを共有することで、他人との思考の違いや共通点を認識することが可能です。相手を理解し、コミュニケーションを深めることができます。</p>
+    </div>
+    <div class="iris-card reveal">
+      <div class="iris-card-num">05</div>
+      <div class="iris-card-title">能力開発</div>
+      <p class="iris-card-text">IRISを使うことで、内省する力、言語化する力、メタ認知力が成長します。自由なテーマで繰り返し掘り下げることで、課題設定する力も身につきます。</p>
+    </div>
+  </div>
+</section>
+
+<div class="deco-line"></div>
+
+<!-- BUSINESS -->
+<section class="business" id="business">
+  <div class="reveal">
+    <span class="section-label">Our Business</span>
+    <h2 class="section-title">事業内容</h2>
+    <div class="section-divider"></div>
+    <p style="font-size:14px;color:var(--stone);max-width:560px;line-height:2;">
+      思考の整理や自己理解を深め、さらにそれを共有・議論することで、より良いコミュニケーションと組織の成長に貢献します。
+    </p>
+  </div>
+  <div class="business-grid">
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75&fit=crop" alt="ワークショップ開発">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">01</div>
+        <h3 class="business-card-title">ワークショップ開発<br><span style="font-size:12px;font-weight:400;color:var(--stone);font-family:'Noto Sans JP',sans-serif;">研修・教育企業向け商品開発</span></h3>
+        <p class="business-card-text">IRISを活用し、個人の内省や体験の言語化プロセスを組み込んだオリジナルワークショップの開発提供</p>
+      </div>
+    </div>
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=75&fit=crop" alt="ワークショップ支援">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">02</div>
+        <h3 class="business-card-title">ワークショップ支援</h3>
+        <p class="business-card-text">イベントや研修における個別ワークショップの企画・運営。既存ワークショップ内における内省パートのファシリテーション</p>
+      </div>
+    </div>
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75&fit=crop" alt="組織開発支援">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">03</div>
+        <h3 class="business-card-title">組織開発支援</h3>
+        <p class="business-card-text">マネージャー育成、新人教育、理念浸透等の組織課題に対する内省を通じたプログラムの提供と実行支援</p>
+      </div>
+    </div>
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&q=75&fit=crop" alt="多言語・多文化">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">04</div>
+        <h3 class="business-card-title">多言語・多文化の<br>相互理解支援</h3>
+        <p class="business-card-text">海外現地法人のマネジメント力向上。英語を介さずに互いに母国語での認知の見える化</p>
+      </div>
+    </div>
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75&fit=crop" alt="調査研究支援">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">05</div>
+        <h3 class="business-card-title">調査研究支援<br><span style="font-size:12px;font-weight:400;color:var(--stone);font-family:'Noto Sans JP',sans-serif;">マーケティングや学術研究</span></h3>
+        <p class="business-card-text">アンケートよりも深いインサイトの取得が可能。インタビューよりも短期間で広くデータ取得可能</p>
+      </div>
+    </div>
+    <div class="business-card reveal">
+      <div class="business-card-img-wrap">
+        <img class="business-card-img" src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=600&q=75&fit=crop" alt="サービス開発支援">
+      </div>
+      <div class="business-card-body">
+        <div class="business-card-num">06</div>
+        <h3 class="business-card-title">サービス開発支援</h3>
+        <p class="business-card-text">カウンセリング、コンサルティング等の対人サービスを含む顧客体験ソリューションの提供と事業開発支援</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUE -->
+<section class="issue">
+  <div class="reveal">
+    <span class="section-label">Our Issue</span>
+    <h2 class="section-title">「考える」とは何か？</h2>
+    <div class="section-divider"></div>
+  </div>
+  <p class="issue-intro reveal">
+    私たちは人が自然と身につける内省過程（自問自答のプロセス）に、有意義なイシューを発見し、自己理解を深め、表現や創作を産み出す原動力があるのではないか？と問い続けています。内省のメカニズムを探求するとともに、そのプロセスを可視化し、内省の力を磨き育てられる技を開発しています。
+  </p>
+  <div class="issue-grid">
+    <a href="https://note.com/kennyyang/n/na7eeba2784c8" target="_blank" class="issue-card reveal">
+      <div class="issue-card-thumb">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=75&fit=crop" alt="思考の可視化" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+      </div>
+      <div class="issue-card-body">
+        <span class="issue-source">NOTE — 金田喜人 / 内省ツールIRIS開発者</span>
+        <h3 class="issue-card-title">「思考のプロセスを可視化する」内省ツール＜IRIS＞での5万回超の自問自答から見えてきたこと</h3>
+      </div>
+    </a>
+    <a href="https://www.anow.jp/technology/39/" target="_blank" class="issue-card reveal">
+      <div class="issue-card-thumb">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75&fit=crop" alt="対話と協働" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+      </div>
+      <div class="issue-card-body">
+        <span class="issue-source">INTERVIEW — anow.jp</span>
+        <h3 class="issue-card-title">自問自答の繰り返しで自分の考えを深掘りする／自問自答によって磨かれる「個の尖り」がコラボレーションを促進する</h3>
+      </div>
+    </a>
+    <a href="https://www.anow.jp/technology/40/" target="_blank" class="issue-card reveal">
+      <div class="issue-card-thumb">
+        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?w=600&q=75&fit=crop" alt="意味と変化" style="width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(70%) brightness(0.9);">
+      </div>
+      <div class="issue-card-body">
+        <span class="issue-source">INTERVIEW — anow.jp</span>
+        <h3 class="issue-card-title">「新しい意味」によって変化が生まれる／自問自答によって磨かれる「個の尖り」がコラボレーションを促進する</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="deco-line"></div>
+
+<!-- CORPORATE -->
+<section class="corporate" id="corporate">
+  <div class="corporate-layout">
+    <div class="reveal">
+      <span class="section-label">Corporate</span>
+      <h2 class="section-title">会社概要</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="reveal">
+      <table class="corporate-table">
+        <tr>
+          <td>会社名</td>
+          <td>株式会社問道社</td>
+        </tr>
+        <tr>
+          <td>代表者</td>
+          <td>金田 喜人</td>
+        </tr>
+        <tr>
+          <td>設立</td>
+          <td>2020年10月9日</td>
+        </tr>
+        <tr>
+          <td>資本金</td>
+          <td>1,100万円（資本準備金を含む）</td>
+        </tr>
+        <tr>
+          <td>所在地</td>
+          <td>〒181-0002 東京都三鷹市牟礼6−24−24 309</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-layout">
+    <div class="reveal">
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">お問い合わせ</h2>
+      <div class="section-divider"></div>
+      <p class="contact-lead">
+        内省や対話の課題にまつわるご相談を承ります。<br>
+        企業研修、教育、組織開発など、<br>
+        お気軽にご連絡ください。
+      </p>
+    </div>
+    <div class="reveal">
+      <form>
+        <div class="form-group">
+          <label class="form-label">お名前</label>
+          <input type="text" class="form-input" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス</label>
+          <input type="email" class="form-input" placeholder="taro@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メッセージ</label>
+          <textarea class="form-textarea" placeholder="お問い合わせ内容をご記入ください"></textarea>
+        </div>
+        <label class="form-privacy">
+          <input type="checkbox">
+          <span><a href="/privacypolicy.html" target="_blank">プライバシーポリシー</a>を読み同意します</span>
+        </label>
+        <button type="submit" class="btn-submit">送信する</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#top" class="footer-logo">問道社</a>
+  <div class="footer-links">
+    <a href="/privacypolicy.html">プライバシーポリシー</a>
+  </div>
+  <span>©2022 Mon-Dou Inc.</span>
+</footer>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
