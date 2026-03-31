@@ -5,22 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>問道社 -内省力を育てる-</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1e1b4b;
-    --ink-light: #312e81;
     --stone: #6b7280;
-    --parchment: #f5f3ff;
     --cream: #fafafa;
-    --gold: #4f46e5;
-    --gold-light: #7c3aed;
     --mist: #e0e7ff;
     --deep: #0f0e2a;
-    --accent: #6d28d9;
     --violet: #7c3aed;
     --indigo: #4f46e5;
     --lavender: #ede9fe;
+    --pink: #f0abfc;
+    --teal: #2dd4bf;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +27,7 @@
     font-family: 'Noto Sans JP', sans-serif;
     background: var(--cream);
     color: var(--ink);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
     overflow-x: hidden;
   }
@@ -40,7 +37,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 20px 48px;
+    padding: 18px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,39 +45,37 @@
   }
 
   header.scrolled {
-    background: rgba(250,250,250,0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(250,250,250,0.96);
+    backdrop-filter: blur(16px);
     box-shadow: 0 1px 0 rgba(79,70,229,0.1);
   }
 
   .logo {
-    font-family: 'Shippori Mincho', serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-weight: 900;
+    letter-spacing: 0.1em;
     color: var(--ink);
     text-decoration: none;
   }
 
   .logo span {
     display: block;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.35em;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
     color: var(--stone);
-    font-family: 'Noto Sans JP', sans-serif;
     margin-top: 2px;
   }
 
-  nav { display: flex; align-items: center; gap: 36px; }
+  nav { display: flex; align-items: center; gap: 32px; }
 
   nav a {
-    font-size: 12px;
-    letter-spacing: 0.15em;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--stone);
     text-decoration: none;
     transition: color 0.2s;
-    font-weight: 400;
   }
 
   nav a:hover { color: var(--indigo); }
@@ -88,14 +83,14 @@
   .nav-cta {
     background: var(--indigo);
     color: #fff !important;
-    padding: 10px 22px;
-    letter-spacing: 0.1em;
-    font-size: 11px !important;
-    transition: background 0.2s !important;
-    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: 100px;
+    transition: background 0.2s, transform 0.2s !important;
   }
 
-  .nav-cta:hover { background: var(--violet) !important; }
+  .nav-cta:hover { background: var(--violet) !important; transform: translateY(-1px); }
 
   /* ─── HERO ─── */
   .hero {
@@ -110,199 +105,159 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 140px 64px 80px 80px;
+    padding: 140px 56px 80px 80px;
     position: relative;
     z-index: 2;
   }
 
   .hero-badge {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 0.3em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     color: var(--indigo);
     background: var(--lavender);
-    border: 1px solid var(--mist);
-    padding: 6px 16px;
-    margin-bottom: 40px;
+    border: 1.5px solid var(--mist);
+    padding: 7px 18px;
+    margin-bottom: 36px;
     width: fit-content;
     border-radius: 100px;
   }
 
-  .hero-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: clamp(48px, 5vw, 72px);
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    margin-bottom: 28px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--indigo);
-    font-family: 'DM Serif Display', serif;
-  }
-
-  .hero-sub {
-    font-size: 14px;
-    color: var(--stone);
-    line-height: 2;
-    max-width: 400px;
-    margin-bottom: 48px;
-  }
-
-  .hero-actions { display: flex; gap: 16px; align-items: center; }
-
-  .btn-primary {
-    background: var(--indigo);
-    color: #fff;
-    padding: 14px 32px;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-decoration: none;
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: background 0.25s, transform 0.2s;
-    display: inline-block;
-    border-radius: 4px;
-  }
-
-  .btn-primary:hover { background: var(--violet); transform: translateY(-1px); }
-
-  .btn-ghost {
-    color: var(--stone);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-decoration: none;
-    border-bottom: 1px solid var(--mist);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .btn-ghost:hover { color: var(--indigo); border-color: var(--indigo); }
-
-  .hero-right {
-    position: relative;
-    background: var(--lavender);
-    overflow: hidden;
-  }
-
-  .hero-right-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80&fit=crop&crop=entropy');
-    background-size: cover;
-    background-position: center top;
-    opacity: 0.55;
-    filter: saturate(80%) brightness(0.95);
-  }
-
-  .hero-right::before {
+  .hero-badge::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(79,70,229,0.25) 0%, rgba(124,58,237,0.15) 60%, transparent 100%);
-    z-index: 1;
-  }
-
-  .hero-visual {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 40px;
-  }
-
-  .iris-mark {
-    position: relative;
-    width: 240px;
-    height: 240px;
-  }
-
-  .iris-ring {
-    position: absolute;
-    inset: 0;
+    width: 8px; height: 8px;
+    background: var(--indigo);
     border-radius: 50%;
-    border: 1px solid;
-    animation: pulse-ring 4s ease-in-out infinite;
+    animation: blink 2s ease-in-out infinite;
   }
 
-  .iris-ring:nth-child(1) { border-color: rgba(255,255,255,0.7); animation-delay: 0s; }
-  .iris-ring:nth-child(2) { inset: 20px; border-color: rgba(255,255,255,0.5); animation-delay: 0.5s; }
-  .iris-ring:nth-child(3) { inset: 50px; border-color: rgba(255,255,255,0.3); animation-delay: 1s; }
-  .iris-ring:nth-child(4) { inset: 80px; border-color: rgba(255,255,255,0.15); animation-delay: 1.5s; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  .iris-center {
-    position: absolute;
-    inset: 100px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    animation: pulse-center 4s ease-in-out infinite;
-  }
-
-  .iris-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .iris-label .en {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    color: #fff;
-    letter-spacing: 0.1em;
-  }
-
-  .iris-label .ja {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: rgba(255,255,255,0.7);
-    margin-top: 4px;
-  }
-
-  @keyframes pulse-ring {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.02); opacity: 0.7; }
-  }
-
-  @keyframes pulse-center {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.35; }
-  }
-
-  /* ─── SECTION BASE ─── */
-  section { padding: 120px 80px; }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.4em;
-    color: var(--indigo);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.06em;
+  .hero-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     color: var(--ink);
     margin-bottom: 24px;
   }
 
+  .hero-title .accent {
+    color: var(--indigo);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-title .accent::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 6px;
+    background: var(--pink);
+    opacity: 0.5;
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--stone);
+    line-height: 1.9;
+    max-width: 380px;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    color: #fff;
+    padding: 15px 36px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(79,70,229,0.35);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,70,229,0.45); }
+
+  .btn-ghost {
+    color: var(--stone);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+  .btn-ghost:hover { color: var(--indigo); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    background: linear-gradient(145deg, #eef2ff 0%, #ede9fe 50%, #fdf4ff 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ─── HERO SVG ILLUSTRATION ─── */
+  .hero-illustration {
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-deco-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 112px 80px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    color: var(--indigo);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
   .section-divider {
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--indigo), var(--violet));
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--indigo), var(--pink));
     margin-bottom: 40px;
-    border-radius: 2px;
+    border-radius: 3px;
   }
 
   /* ─── PURPOSE ─── */
@@ -313,114 +268,113 @@
     overflow: hidden;
   }
 
-  .purpose::before {
-    content: '問道';
+  .purpose-bg-pattern {
     position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Shippori Mincho', serif;
-    font-size: 280px;
-    color: rgba(255,255,255,0.03);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .purpose::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 50%;
-    height: 100%;
-    background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(79,70,229,0.15) 0%, transparent 70%);
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(124,58,237,0.2) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(79,70,229,0.15) 0%, transparent 50%);
     pointer-events: none;
   }
 
   .purpose .section-label { color: #a5b4fc; }
-  .purpose .section-title { color: #fff; }
-  .purpose .section-divider { background: linear-gradient(90deg, #a5b4fc, #c4b5fd); }
+  .purpose .section-title { color: #fff; font-size: clamp(24px,3vw,36px); }
+  .purpose .section-divider { background: linear-gradient(90deg, #a5b4fc, var(--pink)); }
 
   .purpose-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 72px;
     align-items: center;
     position: relative;
     z-index: 1;
   }
 
   .purpose-text {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 2.4;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.75);
     white-space: pre-line;
   }
 
   .purpose-tags {
-    margin-top: 40px;
+    margin-top: 36px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .purpose-tag {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     font-size: 13px;
-    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
   }
 
   .purpose-tag::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: #a5b4fc;
+    content: '✓';
+    width: 22px; height: 22px;
+    background: rgba(165,180,252,0.15);
+    border: 1px solid rgba(165,180,252,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #a5b4fc;
     flex-shrink: 0;
   }
 
   /* ─── IRIS FEATURES ─── */
   .iris-section { background: var(--cream); }
 
-  .iris-header {
-    max-width: 640px;
-    margin-bottom: 72px;
-  }
+  .iris-header { max-width: 560px; margin-bottom: 64px; }
 
   .iris-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 2px;
-    background: var(--mist);
+    gap: 12px;
   }
 
   .iris-card {
-    background: var(--cream);
-    padding: 40px 28px;
-    transition: background 0.3s;
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 16px;
+    border: 1.5px solid var(--mist);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
   }
 
-  .iris-card:hover { background: var(--lavender); }
+  .iris-card:hover {
+    border-color: var(--indigo);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(79,70,229,0.12);
+  }
 
-  .iris-card-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 48px;
-    color: var(--mist);
-    line-height: 1;
+  .iris-card-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--lavender);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
+    font-size: 22px;
   }
 
   .iris-card-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-size: 15px;
+    font-weight: 700;
     color: var(--ink);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .iris-card-text {
     font-size: 12px;
+    font-weight: 400;
     color: var(--stone);
     line-height: 1.9;
   }
@@ -431,112 +385,114 @@
   .business-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--mist);
-    margin-top: 64px;
+    gap: 16px;
+    margin-top: 56px;
   }
 
   .business-card {
     background: #fff;
+    border-radius: 20px;
     overflow: hidden;
-    transition: background 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  .business-card:hover { background: var(--lavender); }
+  .business-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(79,70,229,0.14);
+  }
 
-  .business-card-body { padding: 32px 32px 40px; }
+  .business-card-illus {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .business-card-body { padding: 28px 28px 36px; }
 
   .business-card-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 13px;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.2em;
     color: var(--indigo);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .business-card-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.6;
-    letter-spacing: 0.05em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
     color: var(--ink);
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
 
   .business-card-text {
     font-size: 12px;
+    font-weight: 400;
     color: var(--stone);
-    line-height: 2;
-  }
-
-  .business-card-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-    filter: saturate(75%) brightness(0.97);
-    transition: filter 0.4s, transform 0.4s;
-  }
-
-  .business-card:hover .business-card-img {
-    filter: saturate(90%) brightness(1.0);
-    transform: scale(1.03);
-  }
-
-  .business-card-img-wrap {
-    overflow: hidden;
-    height: 180px;
+    line-height: 1.9;
   }
 
   /* ─── ISSUE ─── */
   .issue { background: var(--cream); }
 
   .issue-intro {
-    max-width: 720px;
+    max-width: 640px;
     font-size: 15px;
+    font-weight: 400;
     color: var(--stone);
-    line-height: 2.2;
-    margin-bottom: 64px;
+    line-height: 2;
+    margin-bottom: 56px;
   }
 
   .issue-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 
   .issue-card {
-    border: 1px solid var(--mist);
+    border: 1.5px solid var(--mist);
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     color: inherit;
     display: block;
-    border-radius: 8px;
+    border-radius: 16px;
+    background: #fff;
   }
 
-  .issue-card:hover { border-color: var(--indigo); transform: translateY(-4px); }
+  .issue-card:hover {
+    border-color: var(--indigo);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(79,70,229,0.1);
+  }
 
   .issue-card-thumb {
-    height: 200px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     overflow: hidden;
   }
 
-  .issue-card-body { padding: 28px 28px 32px; }
+  .issue-card-body { padding: 24px 24px 28px; }
 
   .issue-source {
     font-size: 10px;
-    letter-spacing: 0.3em;
+    font-weight: 700;
+    letter-spacing: 0.25em;
     color: var(--indigo);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: block;
   }
 
   .issue-card-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 700;
     line-height: 1.7;
     color: var(--ink);
   }
@@ -556,26 +512,28 @@
   .corporate-table tr { border-bottom: 1px solid var(--mist); }
 
   .corporate-table td {
-    padding: 20px 0;
+    padding: 18px 0;
     font-size: 14px;
+    font-weight: 400;
     vertical-align: top;
   }
 
   .corporate-table td:first-child {
     color: var(--stone);
-    width: 120px;
+    width: 110px;
     font-size: 12px;
-    letter-spacing: 0.08em;
-    padding-right: 24px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding-right: 20px;
   }
 
-  .corporate-table td:last-child { color: var(--ink); }
+  .corporate-table td:last-child { color: var(--ink); font-weight: 500; }
 
   /* ─── CONTACT ─── */
   .contact { background: var(--ink); color: #fff; }
   .contact .section-label { color: #a5b4fc; }
   .contact .section-title { color: #fff; }
-  .contact .section-divider { background: linear-gradient(90deg, #a5b4fc, #c4b5fd); }
+  .contact .section-divider { background: linear-gradient(90deg, #a5b4fc, var(--pink)); }
 
   .contact-layout {
     display: grid;
@@ -585,49 +543,49 @@
   }
 
   .contact-lead {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
     line-height: 2;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
-  .form-group { margin-bottom: 24px; }
+  .form-group { margin-bottom: 20px; }
 
   .form-label {
     display: block;
     font-size: 11px;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.45);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
     margin-bottom: 8px;
   }
 
   .form-input, .form-textarea {
     width: 100%;
     background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(165,180,252,0.2);
+    border: 1.5px solid rgba(165,180,252,0.2);
     color: #fff;
-    padding: 14px 16px;
+    padding: 13px 16px;
     font-size: 14px;
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     outline: none;
     transition: border-color 0.2s;
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
-  .form-input:focus, .form-textarea:focus {
-    border-color: #a5b4fc;
-  }
-
-  .form-textarea { min-height: 140px; resize: vertical; }
+  .form-input:focus, .form-textarea:focus { border-color: #a5b4fc; }
+  .form-textarea { min-height: 130px; resize: vertical; }
 
   .form-privacy {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 12px;
+    font-weight: 400;
     color: rgba(255,255,255,0.45);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     cursor: pointer;
   }
 
@@ -635,38 +593,38 @@
   .form-privacy a { color: #a5b4fc; }
 
   .btn-submit {
-    background: var(--indigo);
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
     color: #fff;
     border: none;
-    padding: 16px 40px;
-    font-size: 12px;
-    letter-spacing: 0.2em;
+    padding: 15px 44px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     cursor: pointer;
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.2s;
-    border-radius: 4px;
+    border-radius: 100px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(79,70,229,0.4);
   }
 
-  .btn-submit:hover { background: var(--violet); transform: translateY(-1px); }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,70,229,0.5); }
 
   /* ─── FOOTER ─── */
   footer {
     background: var(--deep);
     color: rgba(255,255,255,0.35);
-    padding: 48px 80px;
+    padding: 44px 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
-    letter-spacing: 0.1em;
   }
 
   .footer-logo {
-    font-family: 'Shippori Mincho', serif;
     font-size: 16px;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.2em;
+    font-weight: 900;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
     text-decoration: none;
   }
 
@@ -674,34 +632,31 @@
   .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: #a5b4fc; }
 
-  /* ─── DECORATIVE LINE ─── */
+  /* ─── DECO LINE ─── */
   .deco-line {
     width: 100%;
     height: 1px;
     background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
-    opacity: 0.4;
+    opacity: 0.35;
   }
 
-  /* ─── SCROLL ANIMATIONS ─── */
+  /* ─── SCROLL REVEAL ─── */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal.visible { opacity: 1; transform: none; }
 
   /* ─── MOBILE ─── */
   @media (max-width: 900px) {
-    header { padding: 16px 24px; }
+    header { padding: 16px 20px; }
     nav { display: none; }
-    section { padding: 80px 24px; }
+    section { padding: 72px 20px; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 120px 24px 60px; }
-    .hero-right { height: 380px; }
+    .hero-left { padding: 110px 20px 48px; }
+    .hero-right { height: 320px; }
     .purpose-layout { grid-template-columns: 1fr; gap: 40px; }
     .iris-grid { grid-template-columns: repeat(2, 1fr); }
     .iris-card:last-child { grid-column: 1 / -1; }
@@ -709,7 +664,7 @@
     .issue-grid { grid-template-columns: 1fr; }
     .corporate-layout { grid-template-columns: 1fr; gap: 40px; }
     .contact-layout { grid-template-columns: 1fr; gap: 40px; }
-    footer { flex-direction: column; gap: 20px; text-align: center; padding: 36px 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
   }
 </style>
 </head>
@@ -732,37 +687,68 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-left">
-    <span class="hero-badge">IRIS — 内省支援ツール　テスト運用中</span>
+    <span class="hero-badge">IRIS テスト運用中 🚀</span>
     <h1 class="hero-title">
-      さぁ、<br>
-      アタマの中を<br>
-      <em>まとめよう</em>
+      頭のなかを、<br>
+      <span class="accent">可視化</span>しよう。
     </h1>
     <p class="hero-sub">
-      IRIS（アイリス）は内省を支援するツールで、<br>
-      特定のテーマについて自問自答を行い、<br>
-      その結果を可視化します。
+      自問自答を繰り返すうちに、<br>
+      思考はどんどん深くなる。<br>
+      IRISは、そのプロセスをサポートする内省ツールです。
     </p>
     <div class="hero-actions">
-      <a href="https://app.iris.do/?type=line" class="btn-primary" target="_blank">IRIS for LINE（無料）</a>
-      <a href="#about-iris" class="btn-ghost">詳しく見る</a>
+      <a href="https://app.iris.do/?type=line" class="btn-primary" target="_blank">✦ IRIS for LINE（無料）</a>
+      <a href="#about-iris" class="btn-ghost">もっと見る</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-right-bg"></div>
-    <div class="hero-visual">
-      <div class="iris-mark">
-        <div class="iris-ring"></div>
-        <div class="iris-ring"></div>
-        <div class="iris-ring"></div>
-        <div class="iris-ring"></div>
-        <div class="iris-center"></div>
-        <div class="iris-label">
-          <span class="en">IRIS</span>
-          <span class="ja">内省可視化ツール</span>
-        </div>
-      </div>
-    </div>
+    <!-- Hero Illustration: person with thought bubbles -->
+    <div class="hero-deco-blob" style="width:300px;height:300px;background:rgba(124,58,237,0.15);top:-60px;right:-60px;"></div>
+    <div class="hero-deco-blob" style="width:200px;height:200px;background:rgba(240,171,252,0.2);bottom:40px;left:20px;"></div>
+    <svg class="hero-illustration" viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background circles -->
+      <circle cx="240" cy="220" r="180" fill="#ede9fe" opacity="0.5"/>
+      <!-- Person body -->
+      <rect x="188" y="270" width="104" height="120" rx="20" fill="#4f46e5"/>
+      <!-- Person head -->
+      <circle cx="240" cy="240" r="48" fill="#fbbf24" opacity="0.9"/>
+      <!-- Face -->
+      <circle cx="228" cy="234" r="5" fill="#1e1b4b"/>
+      <circle cx="252" cy="234" r="5" fill="#1e1b4b"/>
+      <path d="M228 252 Q240 262 252 252" stroke="#1e1b4b" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- Thought cloud 1 (large) -->
+      <circle cx="340" cy="160" r="38" fill="white" opacity="0.95"/>
+      <circle cx="316" cy="180" r="26" fill="white" opacity="0.95"/>
+      <circle cx="362" cy="178" r="28" fill="white" opacity="0.95"/>
+      <circle cx="340" cy="195" r="22" fill="white" opacity="0.95"/>
+      <!-- Lines in thought 1 -->
+      <rect x="316" y="153" width="48" height="4" rx="2" fill="#a5b4fc"/>
+      <rect x="320" y="163" width="40" height="4" rx="2" fill="#c4b5fd"/>
+      <rect x="324" y="173" width="32" height="4" rx="2" fill="#ddd6fe"/>
+      <!-- Thought cloud 2 (small) -->
+      <circle cx="300" cy="195" r="16" fill="white" opacity="0.9"/>
+      <circle cx="288" cy="205" r="11" fill="white" opacity="0.9"/>
+      <rect x="291" y="190" width="18" height="3" rx="1.5" fill="#a5b4fc"/>
+      <rect x="291" y="197" width="14" height="3" rx="1.5" fill="#c4b5fd"/>
+      <!-- Connector dots -->
+      <circle cx="292" cy="218" r="5" fill="white" opacity="0.85"/>
+      <circle cx="282" cy="226" r="4" fill="white" opacity="0.75"/>
+      <circle cx="273" cy="232" r="3" fill="white" opacity="0.65"/>
+      <!-- Floating tags -->
+      <rect x="100" y="180" width="88" height="30" rx="15" fill="white" opacity="0.9"/>
+      <text x="144" y="200" font-family="sans-serif" font-size="12" font-weight="700" fill="#4f46e5" text-anchor="middle">内省する</text>
+      <rect x="110" y="225" width="72" height="28" rx="14" fill="white" opacity="0.9"/>
+      <text x="146" y="244" font-family="sans-serif" font-size="11" font-weight="600" fill="#7c3aed" text-anchor="middle">気づく</text>
+      <rect x="95" y="268" width="84" height="28" rx="14" fill="#a5b4fc" opacity="0.9"/>
+      <text x="137" y="287" font-family="sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">言語化する</text>
+      <!-- Stars / sparkles -->
+      <path d="M390 120 L393 130 L403 130 L395 136 L398 146 L390 140 L382 146 L385 136 L377 130 L387 130 Z" fill="#fbbf24" opacity="0.8"/>
+      <path d="M130 145 L132 151 L138 151 L133 155 L135 161 L130 157 L125 161 L127 155 L122 151 L128 151 Z" fill="#f0abfc" opacity="0.9"/>
+      <circle cx="420" cy="200" r="6" fill="#2dd4bf" opacity="0.7"/>
+      <circle cx="85" cy="310" r="5" fill="#a5b4fc" opacity="0.7"/>
+      <circle cx="410" cy="300" r="4" fill="#fbbf24" opacity="0.6"/>
+    </svg>
   </div>
 </section>
 
@@ -770,10 +756,11 @@
 
 <!-- PURPOSE -->
 <section class="purpose" id="about-iris">
+  <div class="purpose-bg-pattern"></div>
   <div class="purpose-layout">
     <div class="reveal">
       <span class="section-label">Our Purpose</span>
-      <h2 class="section-title">意味が花咲く<br>時の探究</h2>
+      <h2 class="section-title">「意味を感じる」<br>瞬間を増やしたい</h2>
       <div class="section-divider"></div>
       <p class="purpose-text">問道社は
 人が意味を感じる時間を
@@ -782,21 +769,20 @@
 自問自答支援の仕組みづくりを通じて
 新たな内省体験を提供しています</p>
       <div class="purpose-tags">
-        <span class="purpose-tag">企業研修や1on1などの効果向上</span>
-        <span class="purpose-tag">教育やカウンセリングにおける体験改善</span>
-        <span class="purpose-tag">プロジェクトやチームのマネジメント改善</span>
+        <span class="purpose-tag">企業研修・1on1の効果を底上げ</span>
+        <span class="purpose-tag">教育・カウンセリングの体験を改善</span>
+        <span class="purpose-tag">チームのマネジメント課題を解決</span>
       </div>
     </div>
     <div class="reveal">
-      <span class="section-label">IRISについて</span>
-      <h2 class="section-title">あたまの中をまとめる<br>内省ツール IRIS</h2>
+      <span class="section-label">About IRIS</span>
+      <h2 class="section-title">頭の中を整理する<br>内省ツール IRIS</h2>
       <div class="section-divider"></div>
-      <p style="font-size:14px;color:rgba(255,255,255,0.65);line-height:2.2;margin-bottom:28px;">
-        IRIS（アイリス）は内省を支援するツールで、特定のテーマについて自問自答を行い、その結果を可視化します。IRISを利用すると、自己理解と思考の整理をより深く、より短時間で行うことができます。
+      <p style="font-size:15px;color:rgba(255,255,255,0.7);line-height:2;margin-bottom:32px;font-weight:400;">
+        IRIS（アイリス）は、特定のテーマについて自問自答し、その結果を可視化する内省支援ツールです。自己理解と思考の整理を、より深く・より速く体験できます。
       </p>
-      <a href="https://chatgpt.com/g/g-67fccdbe542481919cac0a72bb1109df-irishuasiritetakaito" target="_blank" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(165,180,252,0.35);padding:16px 24px;text-decoration:none;color:#a5b4fc;font-size:12px;letter-spacing:0.15em;transition:all 0.2s;border-radius:6px;" onmouseover="this.style.background='rgba(165,180,252,0.1)'" onmouseout="this.style.background='transparent'">
-        <span style="font-size:18px;">✦</span>
-        IRISなんでも相談GPTを試す
+      <a href="https://chatgpt.com/g/g-67fccdbe542481919cac0a72bb1109df-irishuasiritetakaito" target="_blank" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(165,180,252,0.35);padding:14px 24px;text-decoration:none;color:#a5b4fc;font-size:13px;font-weight:700;transition:all 0.2s;border-radius:100px;" onmouseover="this.style.background='rgba(165,180,252,0.12)'" onmouseout="this.style.background='transparent'">
+        ✦ IRISなんでも相談GPTを試す
       </a>
     </div>
   </div>
@@ -811,29 +797,29 @@
   </div>
   <div class="iris-grid">
     <div class="iris-card reveal">
-      <div class="iris-card-num">01</div>
-      <div class="iris-card-title">アクセシビリティ</div>
-      <p class="iris-card-text">LINEアプリが使えるスマートフォンがあれば誰でも利用できます。オンライン・オフラインを問わず、同時に数百人でも利用可能です。</p>
+      <div class="iris-card-icon">📱</div>
+      <div class="iris-card-title">使いやすい</div>
+      <p class="iris-card-text">LINEがあればOK。オンライン・オフライン問わず、数百人が同時利用できます。</p>
     </div>
     <div class="iris-card reveal">
-      <div class="iris-card-num">02</div>
-      <div class="iris-card-title">手軽さ</div>
-      <p class="iris-card-text">5分程度で内省を行い、思考を整理することができます。スマホでチャットができれば、初めてでも20分程度で利用可能です。</p>
+      <div class="iris-card-icon">⚡</div>
+      <div class="iris-card-title">超スピーディ</div>
+      <p class="iris-card-text">内省にかかる時間はたったの5分。初めてでも20分あれば始められます。</p>
     </div>
     <div class="iris-card reveal">
-      <div class="iris-card-num">03</div>
-      <div class="iris-card-title">データ化</div>
-      <p class="iris-card-text">思考のプロセスが統一されたフォーマットでデータ化されます。これにより、自分自身の思考パターンを把握しやすくなります。</p>
+      <div class="iris-card-icon">📊</div>
+      <div class="iris-card-title">データで残る</div>
+      <p class="iris-card-text">思考プロセスが統一フォーマットでデータ化。自分の思考パターンを把握できます。</p>
     </div>
     <div class="iris-card reveal">
-      <div class="iris-card-num">04</div>
-      <div class="iris-card-title">共有可能</div>
-      <p class="iris-card-text">データを共有することで、他人との思考の違いや共通点を認識することが可能です。相手を理解し、コミュニケーションを深めることができます。</p>
+      <div class="iris-card-icon">🤝</div>
+      <div class="iris-card-title">シェアできる</div>
+      <p class="iris-card-text">データを共有して、他の人との考え方の違いや共通点をリアルタイムで確認。</p>
     </div>
     <div class="iris-card reveal">
-      <div class="iris-card-num">05</div>
-      <div class="iris-card-title">能力開発</div>
-      <p class="iris-card-text">IRISを使うことで、内省する力、言語化する力、メタ認知力が成長します。自由なテーマで繰り返し掘り下げることで、課題設定する力も身につきます。</p>
+      <div class="iris-card-icon">🧠</div>
+      <div class="iris-card-title">力がつく</div>
+      <p class="iris-card-text">使い続けるほど、内省力・言語化力・メタ認知力が伸びていきます。</p>
     </div>
   </div>
 </section>
@@ -846,71 +832,138 @@
     <span class="section-label">Our Business</span>
     <h2 class="section-title">事業内容</h2>
     <div class="section-divider"></div>
-    <p style="font-size:14px;color:var(--stone);max-width:560px;line-height:2;">
-      思考の整理や自己理解を深め、さらにそれを共有・議論することで、より良いコミュニケーションと組織の成長に貢献します。
+    <p style="font-size:15px;color:var(--stone);max-width:520px;line-height:1.9;font-weight:400;">
+      思考の整理と自己理解を深め、共有・議論することで、より良いコミュニケーションと組織の成長に貢献します。
     </p>
   </div>
   <div class="business-grid">
+
+    <!-- Card 01 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75&fit=crop" alt="ワークショップ開発">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#eef2ff,#ddd6fe);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <rect x="30" y="40" width="140" height="90" rx="12" fill="white" opacity="0.8"/>
+          <rect x="48" y="58" width="60" height="8" rx="4" fill="#a5b4fc"/>
+          <rect x="48" y="72" width="104" height="6" rx="3" fill="#ddd6fe"/>
+          <rect x="48" y="84" width="80" height="6" rx="3" fill="#ddd6fe"/>
+          <rect x="48" y="96" width="92" height="6" rx="3" fill="#ddd6fe"/>
+          <circle cx="152" cy="50" r="20" fill="#4f46e5" opacity="0.9"/>
+          <path d="M144 50 L150 56 L160 44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="60" cy="118" r="12" fill="#a5b4fc"/>
+          <circle cx="88" cy="118" r="12" fill="#c4b5fd"/>
+          <circle cx="116" cy="118" r="12" fill="#ddd6fe"/>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">01</div>
-        <h3 class="business-card-title">ワークショップ開発<br><span style="font-size:12px;font-weight:400;color:var(--stone);font-family:'Noto Sans JP',sans-serif;">研修・教育企業向け商品開発</span></h3>
-        <p class="business-card-text">IRISを活用し、個人の内省や体験の言語化プロセスを組み込んだオリジナルワークショップの開発提供</p>
+        <h3 class="business-card-title">ワークショップ開発<br><span style="font-size:12px;font-weight:400;color:var(--stone);">研修・教育企業向け商品開発</span></h3>
+        <p class="business-card-text">IRISを活用し、内省・言語化プロセスを組み込んだオリジナルワークショップを開発・提供します。</p>
       </div>
     </div>
+
+    <!-- Card 02 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=75&fit=crop" alt="ワークショップ支援">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#fdf4ff,#ede9fe);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <circle cx="80" cy="75" r="32" fill="#f0abfc" opacity="0.6"/>
+          <circle cx="120" cy="75" r="32" fill="#a5b4fc" opacity="0.6"/>
+          <circle cx="100" cy="75" r="22" fill="white" opacity="0.85"/>
+          <text x="100" y="80" font-family="sans-serif" font-size="11" font-weight="700" fill="#4f46e5" text-anchor="middle">対話</text>
+          <path d="M60 110 Q100 130 140 110" stroke="#c4b5fd" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+          <circle cx="60" cy="110" r="6" fill="#f0abfc"/>
+          <circle cx="140" cy="110" r="6" fill="#a5b4fc"/>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">02</div>
         <h3 class="business-card-title">ワークショップ支援</h3>
-        <p class="business-card-text">イベントや研修における個別ワークショップの企画・運営。既存ワークショップ内における内省パートのファシリテーション</p>
+        <p class="business-card-text">研修・イベントのワークショップ企画・運営から、内省パートのファシリテーションまで対応します。</p>
       </div>
     </div>
+
+    <!-- Card 03 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75&fit=crop" alt="組織開発支援">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <rect x="30" y="90" width="24" height="50" rx="6" fill="#6ee7b7"/>
+          <rect x="62" y="70" width="24" height="70" rx="6" fill="#34d399"/>
+          <rect x="94" y="50" width="24" height="90" rx="6" fill="#10b981"/>
+          <rect x="126" y="60" width="24" height="80" rx="6" fill="#34d399"/>
+          <rect x="158" y="40" width="24" height="100" rx="6" fill="#059669"/>
+          <path d="M42 90 L74 70 L106 50 L138 60 L170 40" stroke="#047857" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="170" cy="40" r="5" fill="#047857"/>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">03</div>
         <h3 class="business-card-title">組織開発支援</h3>
-        <p class="business-card-text">マネージャー育成、新人教育、理念浸透等の組織課題に対する内省を通じたプログラムの提供と実行支援</p>
+        <p class="business-card-text">マネージャー育成・新人教育・理念浸透など、組織課題を内省プログラムで解決します。</p>
       </div>
     </div>
+
+    <!-- Card 04 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&q=75&fit=crop" alt="多言語・多文化">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#fff7ed,#fed7aa);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <circle cx="70" cy="75" r="30" fill="#fbbf24" opacity="0.7"/>
+          <circle cx="130" cy="75" r="30" fill="#f97316" opacity="0.7"/>
+          <text x="70" y="80" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">JP</text>
+          <text x="130" y="80" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">EN</text>
+          <path d="M90 75 L110 75" stroke="white" stroke-width="2.5" stroke-dasharray="4 3"/>
+          <path d="M102 69 L110 75 L102 81" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="55" y="115" width="90" height="22" rx="11" fill="white" opacity="0.85"/>
+          <text x="100" y="131" font-family="sans-serif" font-size="10" font-weight="600" fill="#c2410c" text-anchor="middle">相互理解</text>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">04</div>
         <h3 class="business-card-title">多言語・多文化の<br>相互理解支援</h3>
-        <p class="business-card-text">海外現地法人のマネジメント力向上。英語を介さずに互いに母国語での認知の見える化</p>
+        <p class="business-card-text">英語を介さずに、互いの認知を母国語で可視化。海外拠点のマネジメント力を向上します。</p>
       </div>
     </div>
+
+    <!-- Card 05 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75&fit=crop" alt="調査研究支援">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#f0f9ff,#bae6fd);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <circle cx="100" cy="65" r="40" fill="white" opacity="0.8"/>
+          <path d="M82 65 L92 75 L118 55" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="100" cy="65" r="40" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+          <rect x="44" y="118" width="112" height="20" rx="10" fill="#7dd3fc" opacity="0.7"/>
+          <text x="100" y="132" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">深いインサイト</text>
+          <circle cx="60" cy="55" r="8" fill="#38bdf8" opacity="0.6"/>
+          <circle cx="148" cy="48" r="6" fill="#0ea5e9" opacity="0.5"/>
+          <circle cx="155" cy="80" r="9" fill="#7dd3fc" opacity="0.7"/>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">05</div>
-        <h3 class="business-card-title">調査研究支援<br><span style="font-size:12px;font-weight:400;color:var(--stone);font-family:'Noto Sans JP',sans-serif;">マーケティングや学術研究</span></h3>
-        <p class="business-card-text">アンケートよりも深いインサイトの取得が可能。インタビューよりも短期間で広くデータ取得可能</p>
+        <h3 class="business-card-title">調査研究支援<br><span style="font-size:12px;font-weight:400;color:var(--stone);">マーケティング・学術研究</span></h3>
+        <p class="business-card-text">アンケート以上のインサイトをインタビューより短時間で取得。研究・マーケに活用できます。</p>
       </div>
     </div>
+
+    <!-- Card 06 -->
     <div class="business-card reveal">
-      <div class="business-card-img-wrap">
-        <img class="business-card-img" src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=600&q=75&fit=crop" alt="サービス開発支援">
+      <div class="business-card-illus" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);">
+        <svg viewBox="0 0 200 160" width="180" height="140" fill="none">
+          <rect x="55" y="45" width="90" height="70" rx="14" fill="white" opacity="0.85"/>
+          <circle cx="100" cy="70" r="20" fill="#f472b6" opacity="0.7"/>
+          <circle cx="100" cy="70" r="12" fill="white"/>
+          <path d="M94 70 L99 75 L107 65" stroke="#db2777" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="68" y="102" width="64" height="8" rx="4" fill="#fbcfe8"/>
+          <circle cx="60" cy="118" r="14" fill="#f9a8d4" opacity="0.8"/>
+          <circle cx="100" cy="124" r="14" fill="#f472b6" opacity="0.8"/>
+          <circle cx="140" cy="118" r="14" fill="#ec4899" opacity="0.8"/>
+        </svg>
       </div>
       <div class="business-card-body">
         <div class="business-card-num">06</div>
         <h3 class="business-card-title">サービス開発支援</h3>
-        <p class="business-card-text">カウンセリング、コンサルティング等の対人サービスを含む顧客体験ソリューションの提供と事業開発支援</p>
+        <p class="business-card-text">カウンセリング・コンサルティングなどの対人サービスを、顧客体験ソリューションで支援します。</p>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -918,40 +971,69 @@
 <section class="issue">
   <div class="reveal">
     <span class="section-label">Our Issue</span>
-    <h2 class="section-title">「考える」とは何か？</h2>
+    <h2 class="section-title">「考える」って、<br>どういうこと？</h2>
     <div class="section-divider"></div>
   </div>
   <p class="issue-intro reveal">
-    私たちは人が自然と身につける内省過程（自問自答のプロセス）に、有意義なイシューを発見し、自己理解を深め、表現や創作を産み出す原動力があるのではないか？と問い続けています。内省のメカニズムを探求するとともに、そのプロセスを可視化し、内省の力を磨き育てられる技を開発しています。
+    自問自答のプロセスに、有意義なイシューを発見し、自己理解を深め、表現や創作を産み出す原動力があると、私たちは信じています。内省のメカニズムを探求し、その力を磨き育てる仕組みを開発中です。
   </p>
   <div class="issue-grid">
+
     <a href="https://note.com/kennyyang/n/na7eeba2784c8" target="_blank" class="issue-card reveal">
-      <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=75&fit=crop" alt="思考の可視化" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
+      <div class="issue-card-thumb" style="background:linear-gradient(135deg,#eef2ff,#ede9fe);">
+        <svg viewBox="0 0 280 180" width="260" height="160" fill="none">
+          <rect x="40" y="30" width="200" height="130" rx="16" fill="white" opacity="0.85"/>
+          <rect x="60" y="50" width="120" height="10" rx="5" fill="#a5b4fc"/>
+          <rect x="60" y="68" width="160" height="7" rx="3.5" fill="#ddd6fe"/>
+          <rect x="60" y="81" width="140" height="7" rx="3.5" fill="#ddd6fe"/>
+          <rect x="60" y="94" width="155" height="7" rx="3.5" fill="#ddd6fe"/>
+          <rect x="60" y="107" width="100" height="7" rx="3.5" fill="#ddd6fe"/>
+          <rect x="60" y="128" width="72" height="22" rx="11" fill="#4f46e5" opacity="0.85"/>
+          <text x="96" y="143" font-family="sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">note</text>
+          <path d="M220 55 L228 72 L237 55 L237 72" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
       </div>
       <div class="issue-card-body">
-        <span class="issue-source">NOTE — 金田喜人 / 内省ツールIRIS開発者</span>
+        <span class="issue-source">NOTE — 金田喜人 / IRIS開発者</span>
         <h3 class="issue-card-title">「思考のプロセスを可視化する」内省ツール＜IRIS＞での5万回超の自問自答から見えてきたこと</h3>
       </div>
     </a>
+
     <a href="https://www.anow.jp/technology/39/" target="_blank" class="issue-card reveal">
-      <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75&fit=crop" alt="対話と協働" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
+      <div class="issue-card-thumb" style="background:linear-gradient(135deg,#fdf4ff,#ede9fe);">
+        <svg viewBox="0 0 280 180" width="260" height="160" fill="none">
+          <circle cx="100" cy="90" r="45" fill="#f0abfc" opacity="0.5"/>
+          <circle cx="180" cy="90" r="45" fill="#a5b4fc" opacity="0.5"/>
+          <text x="100" y="95" font-family="sans-serif" font-size="11" font-weight="700" fill="#7c3aed" text-anchor="middle">個の尖り</text>
+          <text x="180" y="95" font-family="sans-serif" font-size="11" font-weight="700" fill="#4f46e5" text-anchor="middle">協働</text>
+          <path d="M116 90 L164 90" stroke="white" stroke-width="2" stroke-dasharray="4 3"/>
+          <rect x="116" y="130" width="48" height="20" rx="10" fill="white" opacity="0.85"/>
+          <text x="140" y="144" font-family="sans-serif" font-size="9" font-weight="700" fill="#4f46e5" text-anchor="middle">前編</text>
+        </svg>
       </div>
       <div class="issue-card-body">
         <span class="issue-source">INTERVIEW — anow.jp</span>
-        <h3 class="issue-card-title">自問自答の繰り返しで自分の考えを深掘りする／自問自答によって磨かれる「個の尖り」がコラボレーションを促進する</h3>
+        <h3 class="issue-card-title">自問自答を繰り返して考えを深掘りする。「個の尖り」がコラボレーションを生む理由</h3>
       </div>
     </a>
+
     <a href="https://www.anow.jp/technology/40/" target="_blank" class="issue-card reveal">
-      <div class="issue-card-thumb">
-        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?w=600&q=75&fit=crop" alt="意味と変化" style="width:100%;height:100%;object-fit:cover;filter:saturate(70%) brightness(0.95);">
+      <div class="issue-card-thumb" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+        <svg viewBox="0 0 280 180" width="260" height="160" fill="none">
+          <circle cx="140" cy="80" r="50" fill="#6ee7b7" opacity="0.4"/>
+          <path d="M110 80 Q140 50 170 80 Q140 110 110 80 Z" fill="#10b981" opacity="0.6"/>
+          <circle cx="140" cy="80" r="18" fill="white" opacity="0.9"/>
+          <path d="M132 80 L138 86 L150 74" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="105" y="140" width="70" height="20" rx="10" fill="#34d399" opacity="0.9"/>
+          <text x="140" y="154" font-family="sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">後編</text>
+        </svg>
       </div>
       <div class="issue-card-body">
         <span class="issue-source">INTERVIEW — anow.jp</span>
-        <h3 class="issue-card-title">「新しい意味」によって変化が生まれる／自問自答によって磨かれる「個の尖り」がコラボレーションを促進する</h3>
+        <h3 class="issue-card-title">「新しい意味」が変化を生む。自問自答によって磨かれる「個の尖り」とは何か</h3>
       </div>
     </a>
+
   </div>
 </section>
 
@@ -982,12 +1064,12 @@
   <div class="contact-layout">
     <div class="reveal">
       <span class="section-label">Contact</span>
-      <h2 class="section-title">お問い合わせ</h2>
+      <h2 class="section-title">気軽に<br>相談してください</h2>
       <div class="section-divider"></div>
       <p class="contact-lead">
-        内省や対話の課題にまつわるご相談を承ります。<br>
-        企業研修、教育、組織開発など、<br>
-        お気軽にご連絡ください。
+        内省や対話の課題、なんでも聞かせてください。<br>
+        企業研修・教育・組織開発など、<br>
+        一緒に考えましょう。
       </p>
     </div>
     <div class="reveal">
@@ -1006,9 +1088,9 @@
         </div>
         <label class="form-privacy">
           <input type="checkbox">
-          <span><a href="/privacypolicy.html" target="_blank">プライバシーポリシー</a>を読み同意します</span>
+          <span><a href="/privacypolicy.html" target="_blank">プライバシーポリシー</a>を読んで同意します</span>
         </label>
-        <button type="submit" class="btn-submit">送信する</button>
+        <button type="submit" class="btn-submit">送信する ✦</button>
       </form>
     </div>
   </div>
